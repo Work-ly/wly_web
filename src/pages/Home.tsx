@@ -5,16 +5,16 @@
  */
 
 import React from 'react'
-import Counter from '../components/Counter'
 
-export interface HomePageProps {}
+interface Props {}
 
-const HomePage: React.FunctionComponent<HomePageProps> = (props) => {
+function Home(props: Props) {
   return (
     <>
-      <Counter count={0}/>
+      <a className='text-white' href='/login'>Login</a>
+      <a className='ml-4 text-white' href='/signup'>Signup</a>
     </>
   )
 }
 
-export default HomePage
+export default Home
