@@ -12,7 +12,7 @@ import { initializeApp } from 'firebase/app'
 import { UserContextProvider } from './User'
 import { FirebaseConfig } from './util/Firebase'
 
-import Home from './pages/Home'
+import Landing from './pages/Landing'
 import Login from './pages/Login'
 
 export interface Props {}
@@ -33,7 +33,7 @@ function App(props: Props): JSX.Element {
     <UserContextProvider>
       <BrowserRouter>
         <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Landing />} />
             <Route path='/login' element={<Login />} />
         </Routes>
       </BrowserRouter>

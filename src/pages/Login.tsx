@@ -40,7 +40,9 @@ function Login(props: Props): JSX.Element {
 
   return (
     (user?.isLoggedIn)
+    
       ? <p className='text-white'>Logged In as { user.data?.name }</p>
+      
       : <button className='text-white' onClick={getUser}>Login with github</button>
   )
 }

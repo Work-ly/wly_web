@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.landing-navbar{
+  @apply h-16 flex items-center fixed right-0 z-50 text-lg; 
+}
+
+.links{
+  @apply w-72 flex justify-around items-center h-16 m-10;
+}
+
+.content{
+  @apply h-screen;
+}
