@@ -4,7 +4,6 @@
  * date: July 31, 2022
  */
 
-import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { initializeApp } from 'firebase/app'
@@ -27,7 +26,7 @@ function App(props: Props): JSX.Element {
     appId: process.env.REACT_APP_FIREBASE_APP_ID,
     measurementId:process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
   }
-  const fbApp = initializeApp(fbCfg)
+  initializeApp(fbCfg)
 
   return (
     <UserContextProvider>

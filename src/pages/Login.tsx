@@ -24,10 +24,12 @@ function Login(props: Props): JSX.Element {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user?.data)
-    })
-    .then(response => response.json())
-    .then((data) => {
-      console.log(data)
+    }).then((response) => {
+      if (response.ok) {
+        console.log('logged in')
+      } else {
+        user!.isLoggedIn = false
+      }
     })
   }
 
@@ -38,13 +40,27 @@ function Login(props: Props): JSX.Element {
     })
   }
 
-  return (
-    (user?.isLoggedIn)
-    
-      ? <p className='text-white'>Logged In as { user.data?.name }</p>
-      
-      : <button className='text-white' onClick={getUser}>Login with github</button>
-  )
+  if (user?.isLoggedIn) {
+    return (
+      <p className='text-white'>Logged In as { user.data?.name }</p>
+    )
+  } else {
+    return (
+      <>
+      <div className="h-screen w-screen">
+        <div className="logo w-screen h-20 absolute t-0">
+            <p className="text-white">a</p>
+        </div>
+        <div className="absolute h-max">
+          <button className='text-white' onClick={ getUser }>Login with github</button>
+        </div>
+      </div>
+        
+
+        
+      </>
+    )
+  } 
 }
 
 export default Login

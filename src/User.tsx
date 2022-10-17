@@ -31,7 +31,7 @@ interface Props {
 export var UserContext: React.Context<UserContext_>
 
 export function UserContextProvider({ children }: Props): JSX.Element {
-  const [ user, setUser ]  = useState<User>({data: null, isLoggedIn: false} as User)
+  const [ user, setUser ] = useState<User>({ data: null, isLoggedIn: false } as User)
   UserContext = createContext<UserContext_>({ user: user, setUser: setUser })
 
   return (
