@@ -7,9 +7,12 @@
 import { useContext } from 'react'
 
 import { redirectToGithub } from '../util/Github'
-import { UserContext  } from '../User';
+import { UserContext } from '../User';
 
-export interface Props {}
+import wly from '../dist/images/W.LY.svg'
+import Shade from '../dist/images/shade.svg'
+
+export interface Props { }
 
 function Login(props: Props): JSX.Element {
   const { user, setUser } = useContext(UserContext)
@@ -42,25 +45,62 @@ function Login(props: Props): JSX.Element {
 
   if (user?.isLoggedIn) {
     return (
-      <p className='text-white'>Logged In as { user.data?.name }</p>
+      <p className='text-white'>Logged In as {user.data?.name}</p>
     )
   } else {
     return (
       <>
-      <div className="h-screen w-screen">
-        <div className="logo w-screen h-20 absolute t-0">
-            <p className="text-white">a</p>
-        </div>
-        <div className="absolute h-max">
-          <button className='text-white' onClick={ getUser }>Login with github</button>
-        </div>
-      </div>
-        
+        <div className="h-screen w-screen">
 
-        
+          <img src={Shade} className="z-0 w-2/3 fixed"/>
+          <div className="logo w-screen h-12 t-0 z-1">
+            <a href='/'>
+              <img src={wly} className="w-16 absolute ml-6 mt-6 z-10" />
+            </a>
+          </div>
+
+          <div className="absolute w-screen h-max flex z-1">
+
+            <div className='left w-1/2 h-full z-1'>
+              <div className='w-full h-full flex flex-auto flex-col'>
+
+                <div className='w-full mt-28 flex flex-col items-center justify-center'>
+                  <p className='w-1/2 text-white'>Username:</p>
+                  <input className='w-1/2 h-12 rounded-lg p-2' type={"text"}
+                  placeholder='GuestUser0101'></input>
+                </div>
+
+                <div className='w-full mt-4 flex flex-col items-center justify-center'>
+                  <p className='w-1/2 text-white'>Password:</p>
+                  <input className='w-1/2 h-12 rounded-lg p-2' type={"password"} 
+                  placeholder='•••••••••••••••••••••'></input>
+                </div>
+
+                <button className='w-1/2 h-12 rounded-lg m-auto mt-10 bg-purple-secondary-dark text-white
+                transition-all duration-75 ease-linear hover:bg-purple-primary-dark 
+                '>Sign In</button>
+                
+                <div className='w-1/2 mt-10 m-auto flex flex-row justify-center'>
+                  <button className='text-white w-8 h-8 rounded-full border-2' onClick={getUser}><p className=''>l</p></button>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div className="right w-1/2 h-full z-1">
+
+
+            </div>
+
+          </div>
+        </div>
+
+
+
       </>
     )
-  } 
+  }
 }
 
 export default Login
