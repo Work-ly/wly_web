@@ -7,13 +7,21 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'dark': '#121214',
-      'purple-primary-dark': '#3A2C58',
-      'purple-secondary-dark': '#4A3870',
-      'purple-primary-light': '#8A72BD',
+      'dark': '#171618',
+      'purple-primary-dark': '#3B2864',
+      'purple-secondary-dark': '#50328F',
+      'purple-primary-light': '#9B80D3',
       'purple-secondary-light': '#614E8A',
-      'yellow': '#BDB871',
       'white': '#FFFFFF',
+      'black': '#000000'
+    },
+    
+    fontSize: {
+      sm: '1rem',
+      md: '1.2rem',
+      base: '1.1rem',
+      lg: '1.5rem',
+      xl: '2rem',
     },
     extend: {},
   },

@@ -11,6 +11,7 @@ import { UserContext } from '../User';
 
 import wly from '../dist/images/W.LY.svg'
 import Shade from '../dist/images/shade.svg'
+import User from '../dist/images/user_login.png'
 
 export interface Props { }
 
@@ -50,7 +51,7 @@ function Login(props: Props): JSX.Element {
   } else {
     return (
       <>
-        <div className="h-screen w-screen">
+        <div className="h-screen w-screen bg-black text-sm">
 
           <img src={Shade} className="z-0 w-2/3 fixed"/>
           <div className="logo w-screen h-12 t-0 z-1">
@@ -66,7 +67,9 @@ function Login(props: Props): JSX.Element {
 
                 <div className='w-full mt-28 flex flex-col items-center justify-center'>
                   <p className='w-1/2 text-white'>Username:</p>
-                  <input className='w-1/2 h-12 rounded-lg p-2' type={"text"}
+                  <input className='w-1/2 h-12 rounded-lg p-2 transition-all duration-200 ease-in
+                  hover:rounded-md 
+                  ' type={"text"}
                   placeholder='GuestUser0101'></input>
                 </div>
 
@@ -76,8 +79,8 @@ function Login(props: Props): JSX.Element {
                   placeholder='•••••••••••••••••••••'></input>
                 </div>
 
-                <button className='w-1/2 h-12 rounded-lg m-auto mt-10 bg-purple-secondary-dark text-white
-                transition-all duration-75 ease-linear hover:bg-purple-primary-dark 
+                <button className='w-1/2 h-12 rounded-lg m-auto mt-10 bg-purple-secondary-dark text-white text-md
+                transition-all duration-200 ease-in hover:bg-dark hover:shadow-md
                 '>Sign In</button>
                 
                 <div className='w-1/2 mt-10 m-auto flex flex-row justify-center'>
@@ -89,7 +92,17 @@ function Login(props: Props): JSX.Element {
             </div>
 
             <div className="right w-1/2 h-full z-1">
+              <div className='w-full h-full flex flex-auto flex-col'>
+                <div className='h-1/2 w-full mt-16'>
+                  <p className='text-xl text-white'>One more step</p>
+                  <p className='text-xl text-white'>before you can build,</p>
+                  <p className='text-xl text-white'>the Work.ly way.</p>
+                </div>
 
+                <div className='h-full w-full flex justify-end'>
+                  <img src={User} className="w-2/3 z-10 "/>
+                </div>
+              </div>
 
             </div>
 

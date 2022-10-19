@@ -13,6 +13,7 @@ import { FirebaseConfig } from './util/Firebase'
 
 import Landing from './pages/Landing'
 import Login from './pages/Login'
+import Signup from './pages/Signup'
 
 export interface Props {}
 
@@ -34,6 +35,7 @@ function App(props: Props): JSX.Element {
         <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
         </Routes>
       </BrowserRouter>
     </UserContextProvider>
