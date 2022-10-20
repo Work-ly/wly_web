@@ -13,6 +13,9 @@ import wly from '../dist/images/W.LY.svg'
 import Shade from '../dist/images/shade.svg'
 import User from '../dist/images/user_login.png'
 
+import { BsGithub } from "react-icons/bs";
+import { BsGoogle } from "react-icons/bs";
+
 export interface Props { }
 
 function Login(props: Props): JSX.Element {
@@ -65,7 +68,7 @@ function Login(props: Props): JSX.Element {
             <div className='left w-1/2 h-full z-1'>
               <div className='w-full h-full flex flex-auto flex-col'>
 
-                <div className='w-full mt-28 flex flex-col items-center justify-center'>
+                <div className='w-full mt-32 flex flex-col items-center justify-center'>
                   <p className='w-1/2 text-white'>Username:</p>
                   <input className='w-1/2 h-12 rounded-lg p-2 transition-all duration-200 ease-in
                   hover:rounded-md 
@@ -82,9 +85,14 @@ function Login(props: Props): JSX.Element {
                 <button className='w-1/2 h-12 rounded-lg m-auto mt-10 bg-purple-secondary-dark text-white text-md
                 transition-all duration-200 ease-in hover:bg-dark hover:shadow-md
                 '>Sign In</button>
-                
+                <div className='text-white text-xs m-auto '>
+                <a href='/signup' className='underline decoration-solid'>Create an account instead</a>
+
+                </div>
+
                 <div className='w-1/2 mt-10 m-auto flex flex-row justify-center'>
-                  <button className='text-white w-8 h-8 rounded-full border-2' onClick={getUser}><p className=''>l</p></button>
+                  <button className='text-white w-8 h-8 rounded-full border-2 flex justify-center items-center mr-2' onClick={getUser}><BsGithub /></button>
+                  <button className='text-white w-8 h-8 rounded-full border-2 flex justify-center items-center ml-2' onClick={getUser}><BsGoogle /></button>
                 </div>
 
 
@@ -93,10 +101,12 @@ function Login(props: Props): JSX.Element {
 
             <div className="right w-1/2 h-full z-1">
               <div className='w-full h-full flex flex-auto flex-col'>
-                <div className='h-1/2 w-full mt-16'>
-                  <p className='text-xl text-white'>One more step</p>
-                  <p className='text-xl text-white'>before you can build,</p>
-                  <p className='text-xl text-white'>the Work.ly way.</p>
+                <div className='h-1/2 w-full mt-10 flex justify-end'>
+                  <div className='w-1/2 mr-10'>
+                    <p className='text-xl text-white text-right'>One more step</p>
+                    <p className='text-xl text-white text-right'>before you can build,</p>
+                    <p className='text-xl text-white text-right'>the Work.ly way.</p>
+                  </div>
                 </div>
 
                 <div className='h-full w-full flex justify-end'>
