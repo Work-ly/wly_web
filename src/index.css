@@ -4,6 +4,6 @@
 @tailwind utilities;
 
 body {
-  @apply bg-dark;
+  @apply bg-dark w-screen h-screen;
   font-family: 'Koho';
 }

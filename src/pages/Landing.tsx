@@ -16,7 +16,7 @@ function Landing(props: Props) {
   return (
     <>
       <div className='bg-black h-screen w-screen'>
-        <img src={Shade} className="z-0 w-2/3 fixed" />
+        <img src={Shade} className="z-0 h-full fixed" />
         <div className='fixed landing-navbar w-screen h-20 flex items-center z-50 '>
           
           <div className='text-white text-md w-2/5 flex justify-around items-center ml-10'>
@@ -37,7 +37,7 @@ function Landing(props: Props) {
 
         <div className='content h-screen w-screen fixed flex flex-row'>
           <div className="left-content w-1/2 h-screen flex justify-center items-center">
-            <img src={Logo} className="w-1/4 absolute z-10" />
+            <img src={Logo} className="w-1/4 absolute z-10 mr-10" />
           </div>
           <div className='right-content w-1/2 text-white flex justify-center items-center'>
             <div className='w-2/3 h-64 flex items-end flex-col'>

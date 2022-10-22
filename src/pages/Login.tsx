@@ -56,7 +56,7 @@ function Login(props: Props): JSX.Element {
       <>
         <div className="h-screen w-screen bg-black text-sm">
 
-          <img src={Shade} className="z-0 w-2/3 fixed"/>
+          <img src={Shade} className="z-0 h-full fixed"/>
           <div className="logo w-screen h-12 t-0 z-1">
             <a href='/'>
               <img src={wly} className="w-16 absolute ml-6 mt-6 z-10" />
@@ -66,33 +66,44 @@ function Login(props: Props): JSX.Element {
           <div className="absolute w-screen h-max flex z-1">
 
             <div className='left w-1/2 h-full z-1'>
-              <div className='w-full h-full flex flex-auto flex-col'>
+              <div className='w-5/6 h-full flex flex-auto flex-col'>
 
                 <div className='w-full mt-32 flex flex-col items-center justify-center'>
                   <p className='w-1/2 text-white'>Username:</p>
-                  <input className='w-1/2 h-12 rounded-lg p-2 transition-all duration-200 ease-in
-                  hover:rounded-md 
+                  <input className='w-1/2 h-12 rounded-md p-2 transition-all duration-200 ease-in 
+                  hover:rounded-lg hover:shadow-xl hover:translate-x-1 
+                  focus:outline-none focus:translate-x-1
+                  active:translate-x-1
                   ' type={"text"}
                   placeholder='GuestUser0101'></input>
                 </div>
 
                 <div className='w-full mt-4 flex flex-col items-center justify-center'>
                   <p className='w-1/2 text-white'>Password:</p>
-                  <input className='w-1/2 h-12 rounded-lg p-2' type={"password"} 
+                  <input className='w-1/2 h-12 rounded-md p-2 transition-all duration-200 ease-in 
+                  hover:rounded-lg hover:shadow-xl hover:translate-x-1 
+                  focus:outline-none focus:translate-x-1
+                  active:translate-x-1' type={"password"} 
                   placeholder='•••••••••••••••••••••'></input>
                 </div>
 
-                <button className='w-1/2 h-12 rounded-lg m-auto mt-10 bg-purple-secondary-dark text-white text-md
-                transition-all duration-200 ease-in hover:bg-dark hover:shadow-md
+                <button className='w-1/2 h-12 rounded-md m-auto mt-10 bg-purple-secondary-dark text-white text-md transition-all duration-200 ease-in 
+                hover:bg-dark hover:shadow-md
+                focus:outline-none 
                 '>Sign In</button>
-                <div className='text-white text-xs m-auto '>
-                <a href='/signup' className='underline decoration-solid'>Create an account instead</a>
+                <div className='text-white text-xs m-auto mt-1'>
+                <a href='/signup' className='underline decoration-solid transition-colors duration-250 ease-out
+                hover:text-purple-secondary-light'>Create an account instead</a>
 
                 </div>
 
-                <div className='w-1/2 mt-10 m-auto flex flex-row justify-center'>
-                  <button className='text-white w-8 h-8 rounded-full border-2 flex justify-center items-center mr-2' onClick={getUser}><BsGithub /></button>
-                  <button className='text-white w-8 h-8 rounded-full border-2 flex justify-center items-center ml-2' onClick={getUser}><BsGoogle /></button>
+                <div className='w-1/2 mt-8 m-auto flex flex-row justify-center'>
+                  <button className='text-white w-8 h-8 rounded-full border-2 flex justify-center items-center mr-5 transition-colors duration-300 ease-out
+                   hover:text-purple-primary-light
+                  ' onClick={getUser}><BsGithub /></button>
+                  <button className='text-white w-8 h-8 rounded-full border-2 flex justify-center items-center transition-colors duration-300 ease-out
+                  hover:text-purple-primary-light
+                  ' onClick={getUser}><BsGoogle /></button>
                 </div>
 
 
