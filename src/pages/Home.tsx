@@ -16,8 +16,9 @@ interface Props { }
 function Home(props: Props) {
   return (
     <>
-            <Header />
-            <Navbar />
+              <Header />
+              <Navbar />
+            
     </>
   )
 }

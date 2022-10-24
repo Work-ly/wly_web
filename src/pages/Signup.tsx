@@ -36,33 +36,36 @@ function Signup(props: Props) {
             <div className='w-full mt-10 flex flex-col items-center justify-center'>
                 <p className='w-1/2 text-white'>Username:</p>
                 <input className='w-1/2 h-12 rounded-md p-2 transition-all duration-200 ease-in 
-                  hover:rounded-lg hover:shadow-xl hover:translate-x-1 
-                  focus:outline-none focus:translate-x-1
-                  active:translate-x-1
+                  hover:rounded-lg hover:shadow-xl
+                  focus:outline-none 
+                  
                   ' type={"text"}
                   placeholder='GuestUser0101'></input>
               </div>
 
               <div className='w-full mt-4 flex flex-col items-center justify-center'>
                 <p className='w-1/2 text-white'>Email:</p>
-                <input className='w-1/2 h-12 rounded-lg p-2 transition-all duration-200 ease-in hover:rounded-md' type={"text"} placeholder='nilson0101@gmail.com'></input>
+                <input className='w-1/2 h-12 rounded-md p-2 transition-all duration-200 ease-in 
+                  hover:rounded-lg hover:shadow-xl 
+                  focus:outline-none 
+                  ' type={"text"} placeholder='nilson0101@gmail.com'></input>
               </div>
 
               <div className='w-full mt-4 flex flex-col items-center justify-center'>
                 <p className='w-1/2 text-white'>Password:</p>
                 <input className='w-1/2 h-12 rounded-md p-2 transition-all duration-200 ease-in 
-                  hover:rounded-lg hover:shadow-xl hover:translate-x-1 
-                  focus:outline-none focus:translate-x-1
-                  active:translate-x-1' type={"password"}
+                  hover:rounded-lg hover:shadow-xl
+                  focus:outline-none
+                  ' type={"password"}
                   placeholder='•••••••••••••••••••••'></input>
               </div>
 
-              <button className='w-1/2 h-12 rounded-md m-auto mt-10 bg-purple-secondary-dark text-white text-md transition-all duration-200 ease-in 
-                hover:bg-dark hover:shadow-md
+              <button className='w-1/2 h-12 rounded-md m-auto mt-10 bg-purple-secondary-dark text-white text-md transition-all duration-200 ease-in shadow-md
+                hover:bg-dark hover:shadow-lg
                 focus:outline-none'>Sign Up</button>
-              <div className='text-white text-xs m-auto '>
-                <a href='/signup' className='underline decoration-solid transition-colors duration-250 ease-out
-                hover:text-purple-primary-light'>Sign in instead</a>
+              <div className='text-white text-xs m-auto flex flex-row mt-1'>
+                <a href='/login' className='underline decoration-solid transition-colors duration-250 ease-out
+                hover:text-purple-primary-light'>Log in instead</a>
 
               </div>
 
