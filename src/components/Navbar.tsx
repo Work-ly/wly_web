@@ -5,21 +5,14 @@
  */
 
 import React from 'react'
+import NavbarButton from '../components/NavbarButton'
 import { AiFillHome } from 'react-icons/ai'
 import { HiDocumentText } from 'react-icons/hi'
 
 
 
-interface Props { }
+interface Props{
 
-function Button(props:Props) {
-  return (
-    <a href='/home'>
-      <div className='w-12 h-12 bg-purple-primary-light flex justify-center items-center rounded-md transition-all duration-100 ease-linear
-            hover:scale-110'>
-      </div>
-    </a>
-  )
 
 }
 
@@ -28,41 +21,23 @@ function Navbar(props: Props) {
     <>
       <div className='fixed w-[calc(100px)] h-screen flex flex-col items-center l-0 z-2'>
         <div className='w-full h-[calc(350px)] flex flex-col justify-around items-center mt-24'>
-          <Button>
-            <i className='text-white text-lg'><AiFillHome />
-            
+          <NavbarButton
+            iconImg={AiFillHome}
+          
+          />
             {/* 
-            
               learn props and stuff with jozutm
-            
             */}
+            
+          <NavbarButton 
+          iconImg={AiFillHome}/>
 
-            </i>
-          </Button>
-          <Button>
-            <i className='text-white text-lg'><AiFillHome /></i>
+          <NavbarButton 
+          iconImg={AiFillHome}/>
 
+          <NavbarButton 
+          iconImg={AiFillHome}/>
 
-          </Button>
-
-          <Button>
-            <i className='text-white text-lg'><AiFillHome /></i>
-
-
-          </Button>
-
-          <Button>
-            <i className='text-white text-lg'><AiFillHome /></i>
-
-
-          </Button>
-
-
-          <Button>
-            <i className='text-white text-lg'><AiFillHome /></i>
-
-
-          </Button>
 
 
         </div>

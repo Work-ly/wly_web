@@ -16,9 +16,17 @@ function Chat() {
     flex flex-row  
     '>
         <div className='basis-2/5 h-full bg-dark'>
+            {
+                /* 
+                    
+                
+                */
+            }
+
         </div>
         <div className=' basis-3/5 bg-purple-primary-dark'>
                 
+
         </div>
     </div>
   )

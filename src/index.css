@@ -3,6 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .highligthed {
+    @apply ;
+
+  }
+
+}
+
 body {
   @apply bg-dark w-screen h-screen;
   font-family: 'Koho';
