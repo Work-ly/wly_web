@@ -4,13 +4,33 @@
  * date: July 31, 2022
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import './Landing.css'
 import Logo from '../dist/images/Logo.svg'
 import Shade from '../dist/images/shade.svg'
 
-interface Props { }
+function AboutUs() {
+  const [about, setAbout] = useState(false)
+    
+  return (
+    <>
+    { /* 
+    
+      Focus on useState to chance the content of this page
+    
+    */}
+    
+    </>
 
+  )
+} 
+
+function Workerly(){
+
+
+} 
+
+interface Props { }
 
 function Landing(props: Props) {
   return (
@@ -21,8 +41,8 @@ function Landing(props: Props) {
           
           <div className='text-white text-md w-2/5 flex justify-around items-center ml-10'>
             <a href='/'className='hover:underline '>Home</a>
-            <a href='/'className='hover:underline '>About us</a>
-            <a href='/'className='hover:underline '>Become a Worker.ly</a>
+            <a onClick={AboutUs} className='hover:underline hover:cursor-pointer'>About us</a>
+            <a onClick={Workerly} className='hover:underline hover:cursor-pointer'>Become a Worker.ly</a>
           </div>
           <div className='links flex justify-around items-center h-16 m-10 text-md fixed right-0'>
             <a className='justify-center rounded-lg text-white border-2 h-12 w-28 flex items-center  transition-all duration-300 

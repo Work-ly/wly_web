@@ -6,58 +6,65 @@
 
 import React from 'react'
 import { AiFillHome } from 'react-icons/ai'
-
-
-interface Props {}
+import { HiDocumentText } from 'react-icons/hi'
 
 
 
+interface Props { }
+
+function Button(props:Props) {
+  return (
+    <a href='/home'>
+      <div className='w-12 h-12 bg-purple-primary-light flex justify-center items-center rounded-md transition-all duration-100 ease-linear
+            hover:scale-110'>
+      </div>
+    </a>
+  )
+
+}
 
 function Navbar(props: Props) {
   return (
     <>
       <div className='fixed w-[calc(100px)] h-screen flex flex-col items-center l-0 z-2'>
         <div className='w-full h-[calc(350px)] flex flex-col justify-around items-center mt-24'>
-          <a href='/home'>
-            <div className='w-12 h-12 bg-purple-primary-light flex justify-center items-center rounded-md'>
-              <i className='text-white text-lg'><AiFillHome /></i>
-            </div>
+          <Button>
+            <i className='text-white text-lg'><AiFillHome />
             
-          </a>
-
-
-          <a href='/home'>
-            <div className='w-12 h-12 bg-purple-primary-light flex justify-center items-center rounded-md            '>
-              
-            </div>
+            {/* 
             
-          </a>
-
-          
-          <a href='/home'>
-            <div className='w-12 h-12 bg-purple-primary-light flex justify-center items-center rounded-md'>
-              
-            </div>
+              learn props and stuff with jozutm
             
-          </a>
+            */}
 
-          
-          <a href='/home'>
-            <div className='w-12 h-12 bg-purple-primary-light flex justify-center items-center rounded-md'>
-              
-            </div>
-            
-          </a>
+            </i>
+          </Button>
+          <Button>
+            <i className='text-white text-lg'><AiFillHome /></i>
 
-          
-          <a href='/home'>
-            <div className='w-12 h-12 bg-purple-primary-light flex justify-center items-center rounded-md'>
-              
-            </div>
-            
-          </a>
 
-          
+          </Button>
+
+          <Button>
+            <i className='text-white text-lg'><AiFillHome /></i>
+
+
+          </Button>
+
+          <Button>
+            <i className='text-white text-lg'><AiFillHome /></i>
+
+
+          </Button>
+
+
+          <Button>
+            <i className='text-white text-lg'><AiFillHome /></i>
+
+
+          </Button>
+
+
         </div>
       </div>
     </>
