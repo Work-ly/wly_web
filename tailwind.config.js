@@ -14,7 +14,8 @@ module.exports = {
       'purple-primary-light': '#9B80D3',
       'purple-secondary-light': '#614E8A',
       'white': '#FFFFFF',
-      'black': '#000000'
+      'black': '#000000',
+      'dark-02': '#111012'
     },
     fontSize: {
       xs: '0.85rem',

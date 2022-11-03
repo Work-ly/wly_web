@@ -7,15 +7,15 @@
 
 import React from 'react'
 
-function Chat() {
+export const Chat = () =>{
     
   return (
-    <div className='fixed w-2/3 h-3/4 rounded-lg border-2 top-16 right-7 
-    shadow-lg
+    <div className='fixed w-2/3 h-3/4 rounded-[10px] border-[1px] top-16 right-7 z-100
+    shadow-xl
 
     flex flex-row  
     '>
-        <div className='basis-2/5 h-full bg-dark'>
+        <div className='basis-2/5 h-full bg-dark rounded-tl-[10px] rounded-bl-[10px]'>
             {
                 /* 
                     
@@ -24,12 +24,10 @@ function Chat() {
             }
 
         </div>
-        <div className=' basis-3/5 bg-purple-primary-dark'>
+        <div className=' basis-3/5 bg-purple-primary-dark rounded-tr-[10px] rounded-br-[10px]'>
                 
 
         </div>
     </div>
   )
 }
-
-export default Chat
