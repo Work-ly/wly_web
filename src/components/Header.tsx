@@ -18,6 +18,8 @@ import { Chat } from '../components/Chat'
 import { Notification } from '../components/Notification'
 
 interface Props {
+  team_name: any
+  project_name: any
   usr_image: any
 
 }
@@ -59,12 +61,12 @@ function Header(props: Props) {
             </div>
             <a className='w-36 h-full flex flex-row justify-center items-center'>
               <img src={team} className='w-[calc(20px)]'></img>
-              <p id='team' className='text-white text-sm ml-2'>Crader's Tlub</p>
+              <p id='team' className='text-white text-sm ml-2'>{props.team_name}</p>
             </a>
 
             <a className='w-36 h-full flex flex-row justify-center items-center'>
               <img src={project} className='w-[calc(20px)]'></img>
-              <p id='team' className='text-white text-sm ml-2'> internship</p>
+              <p id='team' className='text-white text-sm ml-2'> {props.project_name}</p>
               <img src={arrow} className='w-[calc(10px)] ml-2 mt-1'></img>
             </a>
 
