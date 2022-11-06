@@ -12,7 +12,6 @@ import project from '../dist/images/projects_icon.png'
 import arrow from '../dist/images/arrow.png'
 import ntc from '../dist/images/notification.png'
 import msg from '../dist/images/msg.png'
-import { render } from '@testing-library/react'
 
 import { Chat } from '../components/Chat'
 import { Notification } from '../components/Notification'
@@ -24,13 +23,18 @@ interface Props {
 
 }
 
+function a() {
+  alert('a')
+
+}
+
 function Dropdowns() {
   const [chatOpen, setChatOpen] = useState(false)
   const [ntcOpen, setNtcOpen] = useState(false)
 
   return (
     <>
-      <a onClick={() => setChatOpen(!chatOpen)} className='group flex justify-center items-center'>
+      <a onClick={() => setChatOpen(!chatOpen)} className='group flex justify-center items-center '>
         <img src={msg} className='w-6 mt-[10px] group-hover:cursor-pointer group-hover:shadow-md transition-all duration-200
         hover:scale-110'
         ></img>
@@ -48,7 +52,7 @@ function Dropdowns() {
 function Header(props: Props) {
   return (
     <>
-      <div className='fixed w-screen h-16 flex flex-row'>
+      <div className='absolute w-screen h-16 flex flex-row z-50'>
         <div className='w-[calc(100px)] h-full flex justify-center items-center ml-[5px]'>
           <img src={wly} className="w-[calc(50px)] absolute z-10" />
         </div>
@@ -64,7 +68,7 @@ function Header(props: Props) {
               <p id='team' className='text-white text-sm ml-2'>{props.team_name}</p>
             </a>
 
-            <a className='w-36 h-full flex flex-row justify-center items-center'>
+            <a className='w-36 h-full flex flex-row justify-center items-center hover:cursor-pointer' onClick={a}>
               <img src={project} className='w-[calc(20px)]'></img>
               <p id='team' className='text-white text-sm ml-2'> {props.project_name}</p>
               <img src={arrow} className='w-[calc(10px)] ml-2 mt-1'></img>
@@ -76,7 +80,7 @@ function Header(props: Props) {
 
 
           <div className=' w-[calc(300px)] flex flex-row justify-center items-center mt-0'>
-            <div className='icons w-24 text-white flex flex-row justify-around items-center '>
+            <div className='icons w-24 text-white flex flex-row justify-around items-center'>
               <Dropdowns />
             </div>
             <div>

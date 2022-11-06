@@ -9,10 +9,14 @@ interface Props {
 export const Input = (props: Props) => {
   return (
     <div className='w-full flex flex-col items-center justify-center'>
-                  <p className='w-full text-white'>{props.label}:</p>
+                  <p className='w-full text-white
+                  2xl:text-xl
+                  '>{props.label}:</p>
                   <input className='w-full h-12 rounded-md p-2 transition-all duration-200 ease-in 
                   hover:rounded-lg hover:shadow-xl 
-                  focus:outline-none'
+                  focus:outline-none
+                  2xl:h-[70px] 2xl:text-xl 2xl:p-6
+                  '
                   type={props.type}
                   placeholder={props.placeholder}></input>
                 </div>

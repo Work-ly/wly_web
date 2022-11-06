@@ -62,7 +62,7 @@ function Login(props: Props): JSX.Element {
       <>
         <div className="h-screen w-screen bg-black text-sm">
 
-          <img src={Shade} className="z-0 h-full fixed" />
+          <img src={Shade} className="z-0 h-full fixed "/>
           <div className="logo fixed w-screen h-12 t-0 z-10">
             <a href='/'>
               <img src={wly} className="w-16 absolute ml-6 mt-6 z-10" />
@@ -72,23 +72,25 @@ function Login(props: Props): JSX.Element {
           <div className="absolute w-screen h-screen flex z-1">
             <div className="w-full flex justify-between  items-center">
               <div className='w-1/2 flex flex-col justify-center items-center'>
-                <div className='w-1/2 flex flex-col justify-center space-y-8'>
-                  <Input label="Email" type="text" placeholder="user 123" />
+                <div className='w-1/2 flex flex-col justify-center space-y-8 
+               xl:w-[330px] xl:mr-24
+                2xl:w-[600px] 2xl:h-[900px]'>
+                  <Input label="Email" type="text" placeholder="user 123"/>
                   <Input label="Password" type="password" placeholder="•••••••••••••••••••••" />
 
                   <LoginButton />
-                  <div className='text-white text-xs m-auto'>
+                  <div className='text-white text-xs flex justify-center items-center'>
                     <a href='/signup' className='underline decoration-solid transition-colors duration-250 ease-out
-                hover:text-purple-secondary-light'>Create an account instead</a>
+                hover:text-purple-secondary-light 2xl:text-lg'>Create an account instead</a>
 
                   </div>
 
                   <div className='w-1/2 mt-4 m-auto flex flex-row justify-center'>
                     <button onClick={getUser} className='text-white w-8 h-8 rounded-full border-2 flex justify-center items-center mr-5 transition-colors duration-300 ease-out
-                   hover:text-purple-primary-light
+                   hover:text-purple-primary-light 2xl:w-14 2xl:h-14 2xl:text-xl
                   ' ><BsGithub /></button>
                     <button className='text-white w-8 h-8 rounded-full border-2 flex justify-center items-center transition-colors duration-300 ease-out
-                  hover:text-purple-primary-light
+                  hover:text-purple-primary-light 2xl:w-14 2xl:h-14 2xl:text-xl
                   ' ><BsGoogle /></button>
                   </div>
                 </div>
@@ -98,9 +100,9 @@ function Login(props: Props): JSX.Element {
 
 
               <div className='mr-20'>
-                <p className='text-xl text-white text-right'>One more step</p>
-                <p className='text-xl text-white text-right'>before you can build,</p>
-                <p className='text-xl text-white text-right'>the Work.ly way.</p>
+                <p className='text-xl text-white text-right 2xl:text-xl2'>One more step</p>
+                <p className='text-xl text-white text-right 2xl:text-xl2'>before you can build,</p>
+                <p className='text-xl text-white text-right 2xl:text-xl2'>the Work.ly way.</p>
               </div>
             </div>
           </div>

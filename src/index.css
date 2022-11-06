@@ -4,11 +4,21 @@
 @tailwind utilities;
 
 @layer components {
-  .highligthed {
-    @apply ;
-
+  .gradient-overlay {
+    z-index: -2;
+    position: relative;
   }
 
+  .gradient-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgb(0, 0, 0, 0), #171618);
+    opacity: 1;
+  }
 }
 
 body {
