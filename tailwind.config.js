@@ -17,7 +17,8 @@ module.exports = {
       'dark': '#171618',
       'black': '#000000',
       'dark-02': '#111012',
-      'light-gray': '#BABABA'
+      'light-gray': '#BABABA',
+      'low-opacity-black': 'rgba(0,0,0,0.8)'
     },
     fontSize: {
       xs: '0.85rem',

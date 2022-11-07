@@ -4,35 +4,36 @@
  * date: October 19, 2022
  */
 
-import React, { useContext, useState } from "react";
-import { Input } from "../components/Input";
-import { LoginButton } from "../components/LoginButton";
+import React, { useContext, useState } from "react"
 
-import wly from "../dist/images/W.LY.svg";
-import Shade from "../dist/images/purple_shade.svg";
+import { Input } from "../components/Input"
+import { LoginButton } from "../components/LoginButton"
 
-import { BsGithub } from "react-icons/bs";
-import { BsGoogle } from "react-icons/bs";
+import wly from "../dist/images/W.LY.svg"
+import Shade from "../dist/images/purple_shade.svg"
+
+import { BsGithub } from "react-icons/bs"
+import { BsGoogle } from "react-icons/bs"
 import {
   CreateUserRequest,
   CreateUserResponse,
   LocalUser,
-} from "../models/User";
+} from "../models/User"
 
-import { Message } from "../models/Message";
-import { MessagePopup } from "../components/MessagePopup";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { UserContext } from "../User";
-import { useNavigate } from "react-router-dom";
+import { Message } from "../models/Message"
+import { MessagePopup } from "../components/MessagePopup"
+import { toast, ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import { UserContext } from "../User"
+import { useNavigate } from "react-router-dom"
 
-interface Props {}
+interface Props { }
 
 function Signup(props: Props) {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { user, setUser } = useContext(UserContext);
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const { user, setUser } = useContext(UserContext)
 
   const navigate = useNavigate()
 
@@ -58,14 +59,14 @@ function Signup(props: Props) {
         type: "",
         data: "",
       },
-    };
+    }
 
     const uri: string =
       "http://" +
       process.env.REACT_APP_WLY_BACK_HOST +
       ":" +
       process.env.REACT_APP_WLY_BACK_PORT +
-      "/user";
+      "/user"
 
     await fetch(uri, {
       method: "POST",
@@ -104,11 +105,11 @@ function Signup(props: Props) {
           draggable: false,
           progress: undefined,
           theme: "dark",
-        });
+        })
 
         window.location.href = '/home'
       })
-      .catch(() => {});
+      .catch(() => { })
   }
 
   return (
@@ -133,7 +134,7 @@ function Signup(props: Props) {
               >
                 <Input
                   onChange={(e: any) => {
-                    setUsername(e.target.value);
+                    setUsername(e.target.value)
                   }}
                   label="Username"
                   type="text"
@@ -141,15 +142,15 @@ function Signup(props: Props) {
                 />
                 <Input
                   onChange={(e: any) => {
-                    setEmail(e.target.value);
+                    setEmail(e.target.value)
                   }}
                   label="Email"
                   type="text"
-                  placeholder="user 123"
+                  placeholder="user123@email.com"
                 />
                 <Input
                   onChange={(e: any) => {
-                    setPassword(e.target.value);
+                    setPassword(e.target.value)
                   }}
                   label="Password"
                   type="password"
@@ -198,7 +199,7 @@ function Signup(props: Props) {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Signup;
+export default Signup

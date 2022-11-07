@@ -54,11 +54,16 @@ const Components = [
     }
   />,
   <Team
-    banner=''
-    description='AAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaa'
-    image=''
-    members=''
-    team_name=''
+    team={
+      {
+        name: 'carlos',
+        pfp: pfp,
+        description: 'aaaaaaaaaa',
+        users: [],
+        header: ''
+
+      }
+    } 
   />,
   <Doc />,
   <Repos />,

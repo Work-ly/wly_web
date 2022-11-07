@@ -1,15 +1,30 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import ReactDOM from "react-dom";
 
 import { FiEdit } from "react-icons/fi";
 import { LocalUser } from "../models/User";
-
+import { UserUpdate } from "../components/UserUpdate"
 interface Props {
   user: LocalUser
 }
 
-function editUser() {
-  alert("a");
+function EditUser() {
+  const [userEditOpen, setUserEditOpen] = useState(false)
+
+  return (
+    <>
+      <div onClick={() => setUserEditOpen(!userEditOpen)} className='hover:cursor-default'>
+        <a className="cursor-pointer hover:text-purple-primary-light transition-all duration-100 ease-linear">
+          <FiEdit />
+        </a>
+      </div>
+
+
+      {userEditOpen ? <UserUpdate
+        close={() => setUserEditOpen(!userEditOpen)}
+      /> : <></>}
+    </>
+  )
 }
 
 export const UserPage = (props: Props) => {
@@ -30,9 +45,10 @@ export const UserPage = (props: Props) => {
             <div className="info flex flex-col ml-3">
               <div className="flex flex-row items-center">
                 <p className="text-md "> {props.user.name} </p>
-                <a className="ml-2 w-[1%] cursor-pointer" onClick={editUser}>
+                <a className="ml-2 w-[1%] cursor-pointer">
+                  <EditUser />
                   {" "}
-                  <FiEdit />{" "}
+                  {" "}
                 </a>
               </div>
               <p className="text-sm"> {props.user.email} </p>
@@ -65,7 +81,7 @@ export const UserPage = (props: Props) => {
           {props.user.teams.map((team, i) => {
             return (
               <>
-                <div className="team h-[35%] flex flex-row">
+                <div className="team h-[30%] flex flex-row">
                   <div className="team-img-div w-[30%]">
                     <img
                       src={team.pfp}
@@ -73,7 +89,7 @@ export const UserPage = (props: Props) => {
                       className="team-img h-full w-max"
                     />
                   </div>
-                  <div className="team-info w-[65%] flex flex-col justify-center">
+                  <div className="team-info w-[70%] flex flex-col justify-center">
                     <div className="team-name ml-[2%]">
                       <p className="text-white text-sm">{team.name}</p>
                     </div>
@@ -90,7 +106,7 @@ export const UserPage = (props: Props) => {
                 <div className="w-full h-[65%] rounded-br-lg rounded-bl-lg ">
                   <div
                     id="projects"
-                    className="w-full h-[90%] flex flex-col justify-start items-center overflow-auto overflow-contain text-white text-xs text-light-gray"
+                    className="w-full h-[90%] flex flex-col justify-start items-center overflow-auto overflow-contain text-xs text-light-gray"
                   >
                     <div className="w-[90%] h-6 flex flex-row justify-between mt-[20px]">
                       <div className="project-name">Project-01</div>
