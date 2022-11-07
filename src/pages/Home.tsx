@@ -12,31 +12,50 @@ import Header from '../components/Header'
 import { UserPage } from '../components/UserPage'
 import { Team } from '../components/Team'
 
-import { AiFillGithub, AiFillHome } from 'react-icons/ai'
+import { AiFillGithub, AiFillGoogleSquare, AiFillHome } from 'react-icons/ai'
 import pfp from '../dist/images/pfp.png'
 import usr_image from '../dist/images/pfp.png'
-import banner from '../dist/images/header.png'
+import header from '../dist/images/header.png'
 import { BsFillCalendarFill, BsPeopleFill } from 'react-icons/bs'
-import { HiDocumentText } from 'react-icons/hi'
+import { HiDocumentText, HiOutlineShieldExclamation } from 'react-icons/hi'
 import { Doc } from '../components/Doc'
 import { Repos } from '../components/Repos'
 
-interface Props { }
+interface Props {}
 
 const Components = [
   <UserPage
-    image={pfp}
-    username='carlos'
-    email='josueteodoro@gmail.com'
-    banner={banner}
-    description='fgiuhayuigfbhuadghbgfhdga90teiq'
-    team_img={pfp}
-    team_description='djweiofhyuieagyuegaf'
-    team_name='Nome'
+    user={
+      {
+        name: 'carlos',
+        email: 'josueteodoro@gmail.com',
+        pfp: pfp,
+        header: header,
+        description: 'fgiuhayuigfbhuadghbgfhdga90teiq',
+        teams: [
+          {
+            pfp: pfp,
+            header: header,
+            name: 'Nome',
+            description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofhyuieagyuegaf',
+            users: [
+              {
+                name: 'carlos',
+                role: 'Admin'
+              },
+              {
+                name: 'carlos2',
+                role: 'Member'
+              }
+            ]
+          }
+        ]
+      }
+    }
   />,
   <Team
     banner=''
-    description=''
+    description='AAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaa'
     image=''
     members=''
     team_name=''

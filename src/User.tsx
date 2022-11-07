@@ -1,27 +1,15 @@
 /*
- * file: src/User.ts
+ * file: src/User.tsx
  * author: Josue Teodoro Moreira <teodoro.josue@protonmail.ch>
  * date: August 03, 2022
  */
 
 import { createContext, ReactNode, useState } from 'react'
-
-export interface UserData {
-  uid: string
-  provider: string
-  name: string | null
-  email: string | null
-  pfp?: string | null
-}
-
-export interface User {
-  data: UserData | null
-  isLoggedIn: boolean
-}
+import { LocalUser } from './models/User'
 
 interface UserContext_ {
-  user: User | null
-  setUser: React.Dispatch<React.SetStateAction<User>> 
+  user: LocalUser | null
+  setUser: React.Dispatch<React.SetStateAction<LocalUser | null>> 
 }
 
 interface Props {
@@ -31,7 +19,7 @@ interface Props {
 export var UserContext: React.Context<UserContext_>
 
 export function UserContextProvider({ children }: Props): JSX.Element {
-  const [ user, setUser ] = useState<User>({ data: null, isLoggedIn: false } as User)
+  const [ user, setUser ] = useState<LocalUser | null>(null)
   UserContext = createContext<UserContext_>({ user: user, setUser: setUser })
 
   return (

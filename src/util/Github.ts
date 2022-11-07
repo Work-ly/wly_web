@@ -5,13 +5,14 @@
  */
 
 import { getAuth, GithubAuthProvider, signInWithPopup } from '@firebase/auth';
-import { User } from '../User';
+import { LocalUser } from '../models/User';
+import { LocalTeam } from '../models/Team'
 
-export async function redirectToGithub(): Promise<User> {
+export async function redirectToGithub(): Promise<LocalUser | null> {
   const provider: GithubAuthProvider = new GithubAuthProvider();
   provider.addScope('user')
 
-  var user: User = {} as User
+  var user: LocalUser = {} as LocalUser
 
   const auth = getAuth();
   await signInWithPopup(auth, provider).then((result) => {
@@ -20,22 +21,17 @@ export async function redirectToGithub(): Promise<User> {
 
     const fbUser = result.user;
     user = {
-      data: {
-        uid: fbUser.uid,
-        provider: 'github',
-        name: fbUser.displayName,
-        email: fbUser.email,
-        pfp: fbUser.photoURL
-      },
-      isLoggedIn: true
+        name: (fbUser?.displayName != null) ? fbUser?.displayName : '',
+        email: (fbUser?.email != null) ? fbUser?.email : '', 
+        pfp: (fbUser.photoURL != null) ? fbUser.photoURL : '',
+        header: '',
+        description: '',
+        teams: [{} as LocalTeam]
     }
   }).catch((error) => {
-    user = {
-      data: null,
-      isLoggedIn: false
-    }
-
     console.log(error.code, error.message)
+
+    return Promise.resolve(null)
   })
 
   return Promise.resolve(user)

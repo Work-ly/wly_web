@@ -19,6 +19,26 @@
     background-image: linear-gradient(to bottom, rgb(0, 0, 0, 0), #171618);
     opacity: 1;
   }
+  
+  ::-webkit-scrollbar {
+    width:10px;
+    
+  }
+  ::-webkit-scrollbar-track {
+    background: #111012;
+    border-radius: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb{
+    width: 4px;
+    height: 4px;
+    border-radius: 8px;
+
+  }
+  ::-webkit-scrollbar-thumb:hover{
+
+    background: #171618;
+  }
 }
 
 body {

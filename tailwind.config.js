@@ -8,14 +8,16 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'dark': '#171618',
+      
       'purple-primary-dark': '#3B2864',
       'purple-secondary-dark': '#50328F',
       'purple-primary-light': '#9B80D3',
       'purple-secondary-light': '#614E8A',
       'white': '#FFFFFF',
+      'dark': '#171618',
       'black': '#000000',
-      'dark-02': '#111012'
+      'dark-02': '#111012',
+      'light-gray': '#BABABA'
     },
     fontSize: {
       xs: '0.85rem',

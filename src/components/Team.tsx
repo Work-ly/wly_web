@@ -37,7 +37,7 @@ export const Team = (props: Props) => {
 
 
             <div className="description w-[20%] h-[10%]">
-              <p className='w-[100%] h-[100%] text-white '>{props.description}</p>
+              <p className='w-[100%] h-[100%] text-white truncate text-xs'>{props.description}</p>
 
             </div>
           </div>
@@ -68,11 +68,25 @@ export const Team = (props: Props) => {
 
       </div>
       <div className="userteams w-[99%] h-[50%] flex flex-row items-center mt-1">
-
-
-      </div>
+        <div className="w-[28%] h-full">
+          <div className="description h-[30%] ml-[3%] bg-dark truncate text-white">
+            <p>{props.description}</p> 
+            {
+              //chante to interface teamdata later         
+            }
+          </div>
+        </div>
+        <div className="w-[28%] h-full ml-[12%] mt-[1%] overflow-y-auto">
+          <div className="description w-full h-[25%] ml-[3%] bg-dark-02 truncate text-white rounded-lg">
+            aaaaaaa
+          </div>
+          <div className="description w-full h-[25%] mt-2 ml-[3%] bg-dark-02 truncate text-white rounded-lg">
+            aaaaaaa
+          </div>
+          </div>
+      
 
     </div>
-
+</div>
   )
 }

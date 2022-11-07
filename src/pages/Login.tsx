@@ -25,21 +25,22 @@ export interface Props { }
 function Login(props: Props): JSX.Element {
   const { user, setUser } = useContext(UserContext)
 
-  // TODO: CORS
+  const navigate = useNavigate()
+
   const registerUser = async () => {
     const url: string = 'http://' +
-      process.env.REACT_APP_WLY_USER_HOST + ':' +
-      process.env.REACT_APP_WLY_USER_PORT + '/user'
+      process.env.REACT_APP_WLY_BACK_HOST + ':' +
+      process.env.REACT_APP_WLY_BACK_PORT + '/user'
 
     fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(user?.data)
+      body: JSON.stringify(user)
     }).then((response) => {
       if (response.ok) {
-        console.log('logged in')
+        console.log(user)
       } else {
-        user!.isLoggedIn = false
+        setUser(null)
       }
     })
   }
@@ -51,12 +52,9 @@ function Login(props: Props): JSX.Element {
     })
   }
 
-  if (user?.isLoggedIn) {
-    return (
-      <p className='text-white'>Logged In as {user.data?.name}</p>
-      
-    )
-    
+  if (user != null) {
+    navigate('/home')
+    return <></>
   } else {
     return (
       <>
@@ -75,10 +73,10 @@ function Login(props: Props): JSX.Element {
                 <div className='w-1/2 flex flex-col justify-center space-y-8 
                xl:w-[330px] xl:mr-24
                 2xl:w-[600px] 2xl:h-[900px]'>
-                  <Input label="Email" type="text" placeholder="user 123"/>
-                  <Input label="Password" type="password" placeholder="•••••••••••••••••••••" />
+                  <Input onChange={(e: any) => {}}label="Email" type="text" placeholder="user 123"/>
+                  <Input onChange={(e: any) => {}}label="Password" type="password" placeholder="•••••••••••••••••••••" />
 
-                  <LoginButton />
+                  <LoginButton onClick={() => {}}/>
                   <div className='text-white text-xs flex justify-center items-center'>
                     <a href='/signup' className='underline decoration-solid transition-colors duration-250 ease-out
                 hover:text-purple-secondary-light 2xl:text-lg'>Create an account instead</a>
