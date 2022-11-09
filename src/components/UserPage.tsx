@@ -22,6 +22,8 @@ function EditUser() {
 
       {userEditOpen ? <UserUpdate
         close={() => setUserEditOpen(!userEditOpen)}
+       
+        
       /> : <></>}
     </>
   )
