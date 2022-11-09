@@ -14,8 +14,21 @@ export const UserUpdate = (props: Props) => {
           <AiOutlineClose />
         </i>
       </a>
-      <div className="w-[45%] h-[90%] border-[2px] border-white rounded-lg bg-dark">
 
+      <div className="w-[45%] h-[90%] border-[2px] border-white rounded-lg bg-dark flex flex-col ">
+        <div className="w-full ab h-[8%] text-xl flex justify-center">
+          Create your Project
+        </div>
+        <div className="w-full bg-purple-secondary-dark h-[20%]">
+          <input type="text" className='w-[80%]/>
+          <input type="text" />
+        </div>
+        <div className="w-full  h-[35%]">
+          b
+        </div>
+        <div className="w-full bg-purple-secondary-dark h-[30%]">
+          c
+        </div>
       </div>
     </div>
   )
