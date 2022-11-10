@@ -22,13 +22,14 @@ export const UserUpdate = (props: Props) => {
           Edit your info
         </div>
         <div className="w-full h-[20%] flex flex-col justify-center items-center mt-[15px]">
-          <p className="description text-lg w-[80%]"> Name: </p>
-          <input type="text" className='w-[80%] h-14 rounded-lg text-black text-lg p-4 ' required />
+          <p className="description md:text-md xl:text-lg w-[80%]"> Name: </p>
+          <input type="text" className='w-[80%] md:h-12 xl:h-14 rounded-lg text-black md:text-md xl:text-lg p-4' required placeholder={props.user.name}/>
         </div>
-        <div className="w-full  h-[32%] flex flex-col justify-center items-center mt-[15px]">
-          <p className="description text-lg w-[80%]"> Description: </p>
-          <input type="text" className='w-[80%] h-72 rounded-lg text-black text-lg p-4 text-start' 
-          placeholder='Your desires and whishes come here'/>
+        <div className="w-full  flex flex-col justify-center items-center mt-[15px] 
+        xl:h-[28%] md:h-[20%]"> 
+          <p className="description sm:text-md xl:text-lg w-[80%]"> Description: </p>
+          <textarea  className='w-[80%] md:h-64 xl:h-72 rounded-lg text-black md:text-sm xl:text-lg pl-4 pt-2 pr-4 text-start resize-none' 
+          placeholder={props.user.description}/>
         </div>
         <div className="w-full  h-[30%] flex flex-row justify-around">
           <div className="left w-1/4 h-full flex flex-col justify-center items-center ml-20 ">
@@ -56,11 +57,11 @@ export const UserUpdate = (props: Props) => {
           </div>
         </div>
         <div className="w-full h-[12%] flex flex-row justify-around items-center">
-          <button onClick={props.close} className='w-[35%] h-[70%] bg-light-gray text-lg rounded-lg ml-20
-          transition duration-75 ease-in hover:bg-dark-02
+          <button onClick={props.close} className='w-[35%] h-[70%] text-lg rounded-lg ml-20 border-2
+          transition duration-200 ease-in hover:bg-white hover:text-black
           '> Cancel </button>
           <input type='submit' className='w-[35%] h-[70%] bg-purple-primary-light text-white text-lg rounded-lg mr-20
-          transition duration-75 ease-in hover:bg-purple-secondary-light'/>
+          transition duration-200 ease-in hover:bg-dark-02'/>
         </div>
 
       </div>

@@ -22,8 +22,33 @@ function EditUser() {
 
       {userEditOpen ? <UserUpdate
         close={() => setUserEditOpen(!userEditOpen)}
-       
-        
+        user={
+          {
+            name: 'carlos',
+            email: 'josueteodoro@gmail.com',
+            pfp: 'pfp',
+            header: 'header',
+            description: 'fgiuhayuigfbhuadghbgfhdga90teiq',
+            teams: [
+              {
+                pfp: 'pfp',
+                header: 'header',
+                name: 'Nome',
+                description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofhyuieagyuegaf',
+                users: [
+                  {
+                    name: 'carlos',
+                    role: 'Admin'
+                  },
+                  {
+                    name: 'carlos2',
+                    role: 'Member'
+                  }
+                ]
+              }
+            ]
+          }
+        }
       /> : <></>}
     </>
   )

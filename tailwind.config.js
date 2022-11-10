@@ -8,7 +8,7 @@ module.exports = {
   ],
   theme: {
     colors: {
-      
+
       'purple-primary-dark': '#3B2864',
       'purple-secondary-dark': '#50328F',
       'purple-primary-light': '#9B80D3',
@@ -20,6 +20,13 @@ module.exports = {
       'light-gray': '#BABABA',
       'low-opacity-black': 'rgba(0,0,0,0.8)'
     },
+
+    screens: {
+      'sm': '600px',
+      'md': '1000px',
+      'xl': '1500px'
+    },
+
     fontSize: {
       xs: '0.85rem',
       sm: '1rem',
@@ -27,11 +34,13 @@ module.exports = {
       base: '1.1rem',
       lg: '1.5rem',
       xl: '2rem',
-      xl2:'3.2rem',
+      xl2: '3.2rem',
       xll: '5rem',
     },
-    extend: {},
+    extend: {
+
+    },
   },
   plugins: [],
-  
+
 }

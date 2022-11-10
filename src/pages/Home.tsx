@@ -14,6 +14,7 @@ import { Team } from '../components/Team'
 
 import { AiFillGithub, AiFillGoogleSquare, AiFillHome } from 'react-icons/ai'
 import pfp from '../dist/images/pfp.png'
+import header_team from '../dist/images/header_team.png'
 import usr_image from '../dist/images/pfp.png'
 import header from '../dist/images/header.png'
 import { BsFillCalendarFill, BsPeopleFill } from 'react-icons/bs'
@@ -60,7 +61,7 @@ const Components = [
         pfp: pfp,
         description: 'aaaaaaaaaa',
         users: [],
-        header: ''
+        header: header_team
 
       }
     } 

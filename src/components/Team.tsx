@@ -35,11 +35,11 @@ export const Team = (props: Props) => {
             </div>
           </div>
 
-          <div className="banner w-full h-full">
+          <div className="gradient-overlay banner w-full h-full">
 
             <div className='w-full h-full '>
 
-              <img src={props.team.header} alt="" className="gradient-overlay w-full h-full z-5 " />
+              <img src={props.team.header} alt="" className="gradient-bt-img w-full h-full z-5 " />
 
             </div>
 
