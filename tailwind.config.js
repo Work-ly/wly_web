@@ -22,9 +22,8 @@ module.exports = {
     },
 
     screens: {
-      'sm': '600px',
-      'md': '1000px',
-      'xl': '1500px'
+      'md': {'min': '800px', 'max':'1600px'},
+      'xl': {'min':'1601px'}
     },
 
     fontSize: {

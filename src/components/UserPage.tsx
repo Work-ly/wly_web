@@ -14,7 +14,7 @@ function EditUser() {
   return (
     <>
       <div onClick={() => setUserEditOpen(!userEditOpen)} className='hover:cursor-default'>
-        <a className="cursor-pointer hover:text-purple-primary-light transition-all duration-100 ease-linear">
+        <a className="transition-all duration-100 ease-linear cursor-pointer hover:text-purple-primary-light">
           <FiEdit />
         </a>
       </div>
@@ -34,7 +34,7 @@ function EditUser() {
                 pfp: 'pfp',
                 header: 'header',
                 name: 'Nome',
-                description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofhyuieagyuegaf',
+                description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofh ',
                 users: [
                   {
                     name: 'carlos',
@@ -56,9 +56,9 @@ function EditUser() {
 
 export const UserPage = (props: Props) => {
   return (
-    <div className="w-full h-full flex flex-col items-center">
+    <div className="flex flex-col items-center w-full h-full">
       <div className="userinfo rounded-tl-lg rounded-tr-lg w-full h-[35%] ">
-        <div className="user-info text-white flex h-[30%] w-[80%] flex-row absolute items-end justify-between">
+        <div className="user-info text-white flex h-[30%] w-[89%] flex-row absolute items-end justify-between">
           <div className="w-[40%] flex flex-row items-end">
             <div className="pfp w-[120px] ml-10">
               <div className="pfp_img w-[100%]">
@@ -69,7 +69,7 @@ export const UserPage = (props: Props) => {
                 />
               </div>
             </div>
-            <div className="info flex flex-col ml-3">
+            <div className="flex flex-col ml-3 info">
               <div className="flex flex-row items-center">
                 <p className="text-md "> {props.user.name} </p>
                 <a className="ml-2 w-[1%] cursor-pointer">
@@ -82,26 +82,26 @@ export const UserPage = (props: Props) => {
             </div>
           </div>
 
-          <div className="description w-[20%] h-[10%]">
-            <p className="w-[100%] h-[100%] text-white">
+          <div className="description w-[30%] h-[30%] flex justify-end items-end">
+            <p className="text-right text-white w-max h-max line-clamp">
               {props.user.description}
             </p>
           </div>
         </div>
 
-        <div className="gradient-overlay banner w-full h-full">
+        <div className="w-full h-full gradient-overlay banner">
           <div className="w-full h-full">
             <img
               src={props.user.header}
               alt=""
-              className="gradient-bt-img w-full h-full z-5"
+              className="w-full h-full gradient-bt-img z-5"
             />
           </div>
         </div>
       </div>
 
       <div className="h-[8%] w-full flex items-end ">
-        <p className="absolute text-white ml-2">Teams</p>
+        <p className="absolute ml-2 text-white">Teams</p>
       </div>
       <div className="userteams w-[99%] h-[50%] flex flex-row items-center mt-1">
         <div className="w-[28%] h-full bg-dark-02 rounded-lg">
@@ -113,15 +113,15 @@ export const UserPage = (props: Props) => {
                     <img
                       src={team.pfp}
                       alt=""
-                      className="team-img h-full w-max"
+                      className="h-full team-img w-max"
                     />
                   </div>
                   <div className="team-info w-[70%] flex flex-col justify-center">
                     <div className="team-name ml-[2%]">
-                      <p className="text-white text-sm">{team.name}</p>
+                      <p className="text-sm text-white">{team.name}</p>
                     </div>
-                    <div className="team-description ml-[2%]">
-                      <p className="text-white text-xs truncate overflow-hidden">
+                    <div className="team-description ml-[2%] h-[40px] pr-4">
+                      <p className="w-full overflow-hidden text-xs text-white line-clamp">
                         {team.description}
                       </p>
                     </div>

@@ -14,6 +14,7 @@ import { Team } from '../components/Team'
 
 import { AiFillGithub, AiFillGoogleSquare, AiFillHome } from 'react-icons/ai'
 import pfp from '../dist/images/pfp.png'
+import logo_ct from '../dist/images/logo_ct.png'
 import header_team from '../dist/images/header_team.png'
 import usr_image from '../dist/images/pfp.png'
 import header from '../dist/images/header.png'
@@ -58,8 +59,8 @@ const Components = [
     team={
       {
         name: 'carlos',
-        pfp: pfp,
-        description: 'aaaaaaaaaa',
+        pfp: logo_ct,
+        description: 'We are just a normal corp trying to fund some money. Money is gonna change the world.',
         users: [],
         header: header_team
 
@@ -114,7 +115,7 @@ function Home() {
             })}
           </div>
         </div>
-        <div className='h-[calc(100%-4rem)]  w-[calc(100%-130px)] ml-[calc(100px)] mr-[30px] mt-16 z-0 '>
+        <div className='h-[calc(100%-4rem)]  w-[calc(100%-130px)] ml-[calc(100px)] mr-[30p    x] mt-16 z-0 '>
           {Components[componentIndex]}
         </div>
       </div>

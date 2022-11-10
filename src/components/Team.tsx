@@ -10,9 +10,9 @@ export const Team = (props: Props) => {
   return (
     <div className='w-full h-[95%]'>
       <div className='w-full h-[40%] flex flex-col items-center '>
-        <div className="userinfo rounded-tl-lg rounded-tr-lg w-full h-full ">
+        <div className="w-full h-full rounded-tl-lg rounded-tr-lg teaminfo">
 
-          <div className="user-info text-white flex h-[30%] w-[30%] flex-row absolute items-end justify-between">
+          <div className="user-info text-white flex h-[30%] w-[89%] flex-row absolute items-end justify-between ">
             <div className='w-[80%] flex flex-row items-end'>
               <div className='pfp w-[120px] ml-10'>
                 <div className="pfp_img w-[100%] h-full">
@@ -20,26 +20,24 @@ export const Team = (props: Props) => {
                 </div>
 
               </div>
-              <div className='info flex flex-col ml-3'>
-                <div className='flex flex-row items-center'>
-                  <p className='text-md '> {props.team.name} </p>
+              <div className='flex flex-col ml-3 info'>
+                <div className='flex flex-col items-start'>
+                  <p className='text-md' > {props.team.name} </p>
+                  <p> 2 members </p>
                 </div>
               </div>
 
             </div>
 
 
-            <div className="description w-[20%] h-[10%]">
-              <p className='w-[100%] h-[100%] text-white truncate text-xs'>{props.team.description}</p>
 
-            </div>
           </div>
 
-          <div className="gradient-overlay banner w-full h-full">
+          <div className="w-full h-full gradient-overlay banner">
 
             <div className='w-full h-full '>
 
-              <img src={props.team.header} alt="" className="gradient-bt-img w-full h-full z-5 " />
+              <img src={props.team.header} alt="" className="w-full h-full gradient-bt-img z-5 " />
 
             </div>
 
@@ -61,16 +59,26 @@ export const Team = (props: Props) => {
 
       </div>
       <div className="userteams w-[99%] h-[50%] flex flex-row items-center mt-1">
-        <div className="w-[28%] h-full">
-          <div className="description h-[30%] ml-[3%] bg-dark truncate text-white">
-            <p>{props.team.description}</p>
+        <div className="w-[38%] h-full">
+          <div className="description h-[30%] ml-[3%] pr-12 text-white line-clamp">
+            <p className='mt-4 ml-3'>{props.team.description}</p>
+          </div>
+          <div className='h-[70%] bg-white'>
+
+
           </div>
         </div>
-        <div className="w-[28%] h-full ml-[12%] mt-[1%] overflow-y-auto">
-          <div className="description h-[25%] ml-[3%] bg-dark-02 truncate text-white rounded-lg">
+        <div className="w-[35%] h-full ml-[2%] mt-[1%] overflow-y-auto">
+          <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-white rounded-lg w-[90%]">
             aaaaaaa
           </div>
-          <div className="description h-[25%] mt-2 ml-[3%] bg-dark-02 truncate text-white rounded-lg">
+          <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-white rounded-lg w-[90%]">
+            aaaaaaa
+          </div>
+          <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-white rounded-lg w-[90%]">
+            aaaaaaa
+          </div>
+          <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-white rounded-lg w-[90%]">
             aaaaaaa
           </div>
         </div>

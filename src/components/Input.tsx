@@ -9,7 +9,7 @@ interface Props {
 
 export const Input = (props: Props) => {
   return (
-    <div className="w-full flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center w-full">
       <p className="w-full text-white 2xl:text-xl">
         {props.label}:
       </p>
