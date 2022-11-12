@@ -2,10 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-.links{
-  @apply w-72 flex justify-around items-center h-16 m-10;
+
+@layer components {
+  .fade {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(transparent 12%);
+    
+
+  }
+  
+
+
 }
 
-.content{
-  @apply h-screen;
+body {
+  overflow-x: hidden;
 }
