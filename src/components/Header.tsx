@@ -15,11 +15,12 @@ import msg from '../dist/images/msg.png'
 
 import { Chat } from '../components/Chat'
 import { Notification } from '../components/Notification'
+import { LocalUser } from '../models/User'
+import { LocalTeam } from '../models/Team'
 
 interface Props {
-  team_name: any
-  project_name: any
-  usr_image: any
+  team: LocalTeam
+  user: LocalUser
 
 }
 
@@ -58,19 +59,21 @@ function Header(props: Props) {
         <div className='flex flex-row justify-between w-full'>
 
 
-          <div className='w-[calc(500px)] h-full flex flex-row'>
+          <div className='w-[calc(500px)] h-full flex flex-row items-center'>
             <div className='w-[calc(20px)]'>
 
             </div>
             <a className='flex flex-row items-center justify-center h-full w-36'>
               <img src={team} className='w-[calc(20px)]'></img>
-              <p id='team' className='ml-2 text-sm text-white'>{props.team_name}</p>
+              <p id='team' className='ml-2 text-sm text-white'>{props.team.name}</p>
             </a>
 
-            <a className='flex flex-row items-center justify-center h-full w-36 hover:cursor-pointer' onClick={a}>
+            <a className='flex flex-row items-center justify-center h-[70%] w-36 hover:cursor-pointer group' onClick={a}>
               <img src={project} className='w-[calc(20px)]'></img>
-              <p id='team' className='ml-2 text-sm text-white'> {props.project_name}</p>
-              <img src={arrow} className='w-[calc(10px)] ml-2 mt-1'></img>
+              <div className="h-[30%] flex justify-center items-center">
+                <p id='team' className='ml-2 text-sm text-white border-b-2 group-hover:border-b-white border-t-2 border-t-dark border-b-dark transition-all duration-300'> </p>
+              </div>
+              <img src={arrow} className='w-[calc(10px)] ml-2 mt-1  group-hover:translate-y-[1px] transition-all duration-300 ease-out'></img>
             </a>
 
 
@@ -86,9 +89,9 @@ function Header(props: Props) {
 
               <a className='flex flex-row items-center justify-end w-32 ml-4'>
                 <div className='w-[calc(40px)] h-[calc(40px)] mr-2 rounded-full border-2 text-white flex justify-center items-center'>
-                  <img id='usr_img' src={props.usr_image} className='w-full h-full rounded-full'></img>
+                  <img id='usr_img' src={props.user.pfp} className='w-full h-full rounded-full'></img>
                 </div>
-                <p id='usr_nickname' className='text-white'>JosueTM</p>
+                <p id='usr_nickname' className='text-white'>{props.user.name}</p>
                 <img src={arrow} className='w-[calc(10px)] h-[calc(7px)] ml-2 mt-1'></img>
               </a>
             </div>

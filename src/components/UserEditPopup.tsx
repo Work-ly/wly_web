@@ -8,7 +8,7 @@ interface Props {
   user: LocalUser
 }
 
-export const UserUpdate = (props: Props) => {
+export const UserEditPopup = (props: Props) => {
   return (
     <div className='fixed top-0 left-0 z-50 flex items-center justify-center w-screen h-screen bg-low-opacity-black hover:cursor-default'>
       <a onClick={props.close} className='absolute top-[7%] right-[28.5%]  transition-all duration-100 ease-linear cursor-pointer hover:text-purple-primary-light'>

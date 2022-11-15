@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import { FiEdit } from "react-icons/fi";
 import { LocalUser } from "../models/User";
-import { UserUpdate } from "../components/UserUpdate"
+import { UserEditPopup } from "../components/UserEditPopup"
 interface Props {
   user: LocalUser
 }
@@ -20,7 +20,7 @@ function EditUser() {
       </div>
 
 
-      {userEditOpen ? <UserUpdate
+      {userEditOpen ? <UserEditPopup
         close={() => setUserEditOpen(!userEditOpen)}
         user={
           {
@@ -83,7 +83,7 @@ export const UserPage = (props: Props) => {
           </div>
 
           <div className="description w-[30%] h-[30%] flex justify-end items-end">
-            <p className="text-right text-white w-max h-max line-clamp">
+            <p className="text-right text-white w-max h-max line-clamp-break-all">
               {props.user.description}
             </p>
           </div>

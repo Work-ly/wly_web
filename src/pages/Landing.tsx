@@ -15,7 +15,7 @@ interface Props { }
 function Landing(props: Props) {
   return (
     <>
-      <div className=' w-screen h-[300vh] bg-black'>
+      <div className=' w-screen h-[300vh] bg-dark-02'>
         <img src={Shade} className="fixed z-0 h-full" />
         <div className='fixed z-50 flex flex-row items-center w-full h-20 landing-navbar xl:h-28 justify-between 
         '>

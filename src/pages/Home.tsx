@@ -23,26 +23,26 @@ import { HiDocumentText, HiOutlineShieldExclamation } from 'react-icons/hi'
 import { Doc } from '../components/Doc'
 import { Repos } from '../components/Repos'
 
-interface Props {}
+interface Props { }
 
 const Components = [
   <UserPage
     user={
       {
-        name: 'carlos',
+        name: 'JozuTm',
         email: 'josueteodoro@gmail.com',
         pfp: pfp,
         header: header,
         description: 'fgiuhayuigfbhuadghbgfhdga90teiq',
         teams: [
           {
-            pfp: pfp,
+            pfp: logo_ct,
             header: header,
             name: 'Nome',
             description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofhyuieagyuegaf',
             users: [
               {
-                name: 'carlos',
+                name: 'JozuTm',
                 role: 'Admin'
               },
               {
@@ -58,14 +58,14 @@ const Components = [
   <Team
     team={
       {
-        name: 'carlos',
+        name: 'JozuTm',
         pfp: logo_ct,
         description: 'We are just a normal corp trying to fund some money. Money is gonna change the world.',
         users: [],
         header: header_team
 
       }
-    } 
+    }
   />,
   <Doc />,
   <Repos />,
@@ -98,9 +98,39 @@ function Home() {
     <>
       <div className='absolute w-screen h-screen'>
         <Header
-          usr_image={usr_image}
-          project_name='Internship'
-          team_name="Crader's Tlub"
+          user={
+            {
+              name: 'JozuTm',
+              email: 'josueteodoro@gmail.com',
+              pfp: pfp,
+              header: header,
+              description: 'fgiuhayuigfbhuadghbgfhdga90teiq',
+              teams: [
+                {
+                  pfp: logo_ct,
+                  header: header,
+                  name: 'Nome',
+                  description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofhyuieagyuegaf',
+                  users: [
+                    {
+                      name: 'JozuTm',
+                      role: 'Admin'
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+          team={
+            {
+              name: "Crader's tlub",
+              pfp: logo_ct,
+              description: 'We are just a normal corp trying to fund some money. Money is gonna change the world.',
+              users: [],
+              header: header_team
+
+            }
+          }
         />
 
         <div className='fixed w-[calc(100px)] h-screen flex flex-col items-center l-0 z-2 '>
