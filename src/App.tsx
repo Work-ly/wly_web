@@ -4,6 +4,7 @@
  * date: July 31, 2022
  */
 
+import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { initializeApp } from 'firebase/app'
@@ -15,6 +16,7 @@ import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Home from './pages/Home'
+
 
 export interface Props {}
 

@@ -4,12 +4,13 @@
  * date: August 03, 2022
  */
 
+import React from 'react'
 import { createContext, ReactNode, useState } from 'react'
 import { LocalUser } from './models/User'
 
 interface UserContext_ {
   user: LocalUser | null
-  setUser: React.Dispatch<React.SetStateAction<LocalUser | null>> 
+  setUser: React.Dispatch<React.SetStateAction<LocalUser | null>>
 }
 
 interface Props {
@@ -19,12 +20,12 @@ interface Props {
 export var UserContext: React.Context<UserContext_>
 
 export function UserContextProvider({ children }: Props): JSX.Element {
-  const [ user, setUser ] = useState<LocalUser | null>(null)
+  const [user, setUser] = useState<LocalUser | null>(null)
   UserContext = createContext<UserContext_>({ user: user, setUser: setUser })
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      { children }
+      {children}
     </UserContext.Provider>
   )
 }

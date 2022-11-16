@@ -15,17 +15,19 @@ import msg from '../dist/images/msg.png'
 
 import { Chat } from '../components/Chat'
 import { Notification } from '../components/Notification'
-import { LocalUser } from '../models/User'
+import { LocalUser, UserProject } from '../models/User'
 import { LocalTeam } from '../models/Team'
+import { LocalProject } from '../models/Project'
 
 interface Props {
-  team: LocalTeam
-  user: LocalUser
+  team: LocalTeam,
+  user: LocalUser,
+  project: LocalProject
 
 }
 
 function a() {
-  alert('a')
+  alert('Coming Soon')
 
 }
 
@@ -71,7 +73,10 @@ function Header(props: Props) {
             <a className='flex flex-row items-center justify-center h-[70%] w-36 hover:cursor-pointer group' onClick={a}>
               <img src={project} className='w-[calc(20px)]'></img>
               <div className="h-[30%] flex justify-center items-center">
-                <p id='team' className='ml-2 text-sm text-white border-b-2 group-hover:border-b-white border-t-2 border-t-dark border-b-dark transition-all duration-300'> </p>
+                <p id='team' className='ml-2 text-sm text-white transition-all duration-300 border-t-2 border-b-2 group-hover:border-b-white border-t-dark border-b-dark'>
+                  {props.project.name}
+                  
+                   </p>
               </div>
               <img src={arrow} className='w-[calc(10px)] ml-2 mt-1  group-hover:translate-y-[1px] transition-all duration-300 ease-out'></img>
             </a>
@@ -87,12 +92,12 @@ function Header(props: Props) {
             </div>
             <div>
 
-              <a className='flex flex-row items-center justify-end w-32 ml-4'>
-                <div className='w-[calc(40px)] h-[calc(40px)] mr-2 rounded-full border-2 text-white flex justify-center items-center'>
+              <a className='flex flex-row items-center justify-end w-32 ml-4 hover:cursor-pointer group' onClick={a}>
+                <div className='w-[40px] h-[40px] mr-2 rounded-full border-2 text-white flex justify-center items-center'>
                   <img id='usr_img' src={props.user.pfp} className='w-full h-full rounded-full'></img>
                 </div>
-                <p id='usr_nickname' className='text-white'>{props.user.name}</p>
-                <img src={arrow} className='w-[calc(10px)] h-[calc(7px)] ml-2 mt-1'></img>
+                <p id='usr_nickname' className='text-sm text-white transition-all duration-300 border-t-2 border-b-2 group-hover:border-b-white border-t-dark border-b-dark'>{props.user.name}</p>
+                <img src={arrow} className='w-[10px] h-[7px] ml-2 mt-1 group-hover:translate-y-[1px] transition-all duration-300 ease-out'></img>
               </a>
             </div>
           </div>

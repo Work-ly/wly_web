@@ -22,6 +22,8 @@ import { BsFillCalendarFill, BsPeopleFill } from 'react-icons/bs'
 import { HiDocumentText, HiOutlineShieldExclamation } from 'react-icons/hi'
 import { Doc } from '../components/Doc'
 import { Repos } from '../components/Repos'
+import { Calendar } from '../components/Calendar'
+import { UserProject } from '../models/User'
 
 interface Props { }
 
@@ -54,6 +56,7 @@ const Components = [
         ]
       }
     }
+
   />,
   <Team
     team={
@@ -69,7 +72,7 @@ const Components = [
   />,
   <Doc />,
   <Repos />,
-  <></>
+  <Calendar />
 ]
 
 const Icons = [
@@ -121,6 +124,17 @@ function Home() {
               ]
             }
           }
+          project={
+            {
+              name:'Internship',
+              description:'a',
+              id:1
+
+            }
+
+          }
+
+
           team={
             {
               name: "Crader's tlub",

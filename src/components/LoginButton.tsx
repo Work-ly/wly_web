@@ -10,7 +10,7 @@ export const LoginButton = (props: Props) => {
                        hover:bg-dark hover:shadow-lg
                        focus:outline-none
                        2xl:h-[70px] 2xl:text-xl"
-            onClick={props.onClick}>
+      onClick={props.onClick}>
       Sign Up
     </button>
   );
