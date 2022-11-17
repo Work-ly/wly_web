@@ -4,7 +4,7 @@
  * date: October 21, 2022
  */
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { NavbarButton } from '../components/NavbarButton'
 import Header from '../components/Header'
@@ -22,18 +22,23 @@ import { BsFillCalendarFill, BsPeopleFill } from 'react-icons/bs'
 import { HiDocumentText, HiOutlineShieldExclamation } from 'react-icons/hi'
 import { Doc } from '../components/Doc'
 import { Repos } from '../components/Repos'
+import { UserContext } from '../User';
+import { ReactSession } from 'react-client-session';
+import { LocalUser } from '../models/User'
 
 interface Props {}
 
+const userData = localStorage.getItem('user')
+const user = (userData != null) ? JSON.parse(userData) : {} as LocalUser
 const Components = [
   <UserPage
     user={
       {
-        name: 'carlos',
-        email: 'josueteodoro@gmail.com',
+        name: user.name,
+        email: user.email,
         pfp: pfp,
         header: header,
-        description: 'fgiuhayuigfbhuadghbgfhdga90teiq',
+        description: user.description,
         teams: [
           {
             pfp: pfp,

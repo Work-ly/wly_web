@@ -8,7 +8,7 @@ interface Props {
   user: LocalUser
 }
 
-function EditUser() {
+function EditUser(curUser: LocalUser) {
   const [userEditOpen, setUserEditOpen] = useState(false)
 
   return (
@@ -24,11 +24,11 @@ function EditUser() {
         close={() => setUserEditOpen(!userEditOpen)}
         user={
           {
-            name: 'carlos',
-            email: 'josueteodoro@gmail.com',
+            name: curUser.name,
+            email: curUser.email,
             pfp: 'pfp',
             header: 'header',
-            description: 'fgiuhayuigfbhuadghbgfhdga90teiq',
+            description: curUser.description,
             teams: [
               {
                 pfp: 'pfp',
@@ -73,7 +73,7 @@ export const UserPage = (props: Props) => {
               <div className="flex flex-row items-center">
                 <p className="text-md "> {props.user.name} </p>
                 <a className="ml-2 w-[1%] cursor-pointer">
-                  <EditUser />
+                  <EditUser {...props.user}/>
                   {" "}
                   {" "}
                 </a>

@@ -16,7 +16,7 @@ export interface LocalUser {
   teams: Array<LocalTeam>
 }
 
-interface FirebaseUser {
+export interface FirebaseUser {
   kind: string
   idToken: string
   email: string

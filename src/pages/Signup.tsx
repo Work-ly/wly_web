@@ -20,6 +20,8 @@ import {
   LocalUser,
 } from "../models/User"
 
+import { ReactSession } from 'react-client-session'
+
 import { Message } from "../models/Message"
 import { toast, ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
@@ -92,23 +94,24 @@ function Signup(props: Props) {
         }
       })
       .then((res) => {
-        const createdUser: CreateUserResponse = JSON.parse(res)
-        setUser(createdUser.wly_user)
-
-        toast("Signed Up Succesfully", {
-          position: "top-right",
+        toast('Signed Up Succesfully', {
+          position: 'top-right',
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,
           draggable: false,
           progress: undefined,
-          theme: "dark",
+          theme: 'dark',
         })
+
+        localStorage.setItem('user', JSON.stringify(res.wly_user))
 
         window.location.href = '/home'
       })
-      .catch(() => { })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (
