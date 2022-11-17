@@ -3,9 +3,11 @@ import ReactDOM from "react-dom";
 
 import { FiEdit } from "react-icons/fi";
 import { LocalUser } from "../models/User";
-import { UserUpdate } from "../components/UserUpdate"
+import { UserEditPopup } from "../components/UserEditPopup"
+import { LocalProject } from "../models/Project";
 interface Props {
-  user: LocalUser
+  user: LocalUser,
+  //projects: [LocalProject]
 }
 
 function EditUser(curUser: LocalUser) {
@@ -20,7 +22,7 @@ function EditUser(curUser: LocalUser) {
       </div>
 
 
-      {userEditOpen ? <UserUpdate
+      {userEditOpen ? <UserEditPopup
         close={() => setUserEditOpen(!userEditOpen)}
         user={
           {
@@ -34,14 +36,14 @@ function EditUser(curUser: LocalUser) {
                 pfp: 'pfp',
                 header: 'header',
                 name: 'Nome',
-                description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofh ',
+                description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofh',
                 users: [
                   {
-                    name: 'carlos',
+                    name: 'JozueTm',
                     role: 'Admin'
                   },
                   {
-                    name: 'carlos2',
+                    name: 'JozueTm2',
                     role: 'Member'
                   }
                 ]
@@ -83,7 +85,7 @@ export const UserPage = (props: Props) => {
           </div>
 
           <div className="description w-[30%] h-[30%] flex justify-end items-end">
-            <p className="text-right text-white w-max h-max line-clamp">
+            <p className="text-right text-white w-max h-max line-clamp-break-all">
               {props.user.description}
             </p>
           </div>
@@ -104,7 +106,7 @@ export const UserPage = (props: Props) => {
         <p className="absolute ml-2 text-white">Teams</p>
       </div>
       <div className="userteams w-[99%] h-[50%] flex flex-row items-center mt-1">
-        <div className="w-[28%] h-full bg-dark-02 rounded-lg">
+        <div className="w-[28%] h-full bg-dark-02 rounded-lg mr-4">
           {props.user.teams.map((team, i) => {
             return (
               <>
@@ -113,7 +115,7 @@ export const UserPage = (props: Props) => {
                     <img
                       src={team.pfp}
                       alt=""
-                      className="h-full team-img w-max"
+                      className="h-full team-img w-max rounded-tl-10"
                     />
                   </div>
                   <div className="team-info w-[70%] flex flex-col justify-center">
@@ -190,10 +192,112 @@ export const UserPage = (props: Props) => {
                     </div>
                   </div>
                 </div>
+
+
+
+                
               </>
             );
           })}
         </div>
+
+
+        <div className="w-[28%] h-full bg-dark-02 rounded-lg mr-4">
+          {props.user.teams.map((team, i) => {
+            return (
+              <>
+                <div className="team h-[30%] flex flex-row">
+                  <div className="team-img-div w-[30%]">
+                    <img
+                      src={team.pfp}
+                      alt=""
+                      className="h-full team-img w-max rounded-tl-10"
+                    />
+                  </div>
+                  <div className="team-info w-[70%] flex flex-col justify-center">
+                    <div className="team-name ml-[2%]">
+                      <p className="text-sm text-white">{team.name}</p>
+                    </div>
+                    <div className="team-description ml-[2%] h-[40px] pr-4">
+                      <p className="w-full overflow-hidden text-xs text-white line-clamp">
+                        {team.description}
+                      </p>
+                    </div>
+                    <div className="team-description ml-[2%] text-white text-xs">
+                      membros
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full h-[65%] rounded-br-lg rounded-bl-lg ">
+                  <div
+                    id="projects"
+                    className="w-full h-[90%] flex flex-col justify-start items-center overflow-auto overflow-contain text-xs text-light-gray"
+                  >
+                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[20px]">
+                      <div className="project-name">Project-01</div>
+
+                      <div className="ppl flex w-[50%] justify-around items-center">
+                        <div className="members">2 Members</div>
+                        <div className="role">Owner</div>
+                      </div>
+                    </div>
+
+                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
+                      <div className="project-name">Project-01</div>
+
+                      <div className="ppl flex w-[50%] justify-around items-center">
+                        <div className="members">2 Members</div>
+                        <div className="role">Owner</div>
+                      </div>
+                    </div>
+
+                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
+                      <div className="project-name">Project-01</div>
+
+                      <div className="ppl flex w-[50%] justify-around items-center">
+                        <div className="members">2 Members</div>
+                        <div className="role">Owner</div>
+                      </div>
+                    </div>
+
+                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
+                      <div className="project-name">Project-01</div>
+
+                      <div className="ppl flex w-[50%] justify-around items-center">
+                        <div className="members">2 Members</div>
+                        <div className="role">Owner</div>
+                      </div>
+                    </div>
+
+                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
+                      <div className="project-name">Project-01</div>
+
+                      <div className="ppl flex w-[50%] justify-around items-center">
+                        <div className="members">2 Members</div>
+                        <div className="role">Owner</div>
+                      </div>
+                    </div>
+
+                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
+                      <div className="project-name">Project-01</div>
+
+                      <div className="ppl flex w-[50%] justify-around items-center">
+                        <div className="members">2 Members</div>
+                        <div className="role">Owner</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                
+              </>
+            );
+          })}
+        </div>
+
+        
       </div>
     </div>
   );

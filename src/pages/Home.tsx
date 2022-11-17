@@ -24,9 +24,10 @@ import { Doc } from '../components/Doc'
 import { Repos } from '../components/Repos'
 import { UserContext } from '../User';
 import { ReactSession } from 'react-client-session';
-import { LocalUser } from '../models/User'
+import { LocalUser, UserProject } from '../models/User'
+import { Calendar } from '../components/Calendar'
 
-interface Props {}
+interface Props { }
 
 const userData = localStorage.getItem('user')
 const user = (userData != null) ? JSON.parse(userData) : {} as LocalUser
@@ -41,13 +42,13 @@ const Components = [
         description: user.description,
         teams: [
           {
-            pfp: pfp,
+            pfp: logo_ct,
             header: header,
             name: 'Nome',
             description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofhyuieagyuegaf',
             users: [
               {
-                name: 'carlos',
+                name: 'JozuTm',
                 role: 'Admin'
               },
               {
@@ -59,22 +60,23 @@ const Components = [
         ]
       }
     }
+
   />,
   <Team
     team={
       {
-        name: 'carlos',
+        name: 'JozuTm',
         pfp: logo_ct,
         description: 'We are just a normal corp trying to fund some money. Money is gonna change the world.',
         users: [],
         header: header_team
 
       }
-    } 
+    }
   />,
   <Doc />,
   <Repos />,
-  <></>
+  <Calendar />
 ]
 
 const Icons = [
@@ -103,9 +105,50 @@ function Home() {
     <>
       <div className='absolute w-screen h-screen'>
         <Header
-          usr_image={usr_image}
-          project_name='Internship'
-          team_name="Crader's Tlub"
+          user={
+            {
+              name: 'JozuTm',
+              email: 'josueteodoro@gmail.com',
+              pfp: pfp,
+              header: header,
+              description: 'fgiuhayuigfbhuadghbgfhdga90teiq',
+              teams: [
+                {
+                  pfp: logo_ct,
+                  header: header,
+                  name: 'Nome',
+                  description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofhyuieagyuegaf',
+                  users: [
+                    {
+                      name: 'JozuTm',
+                      role: 'Admin'
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+          project={
+            {
+              name:'Internship',
+              description:'a',
+              id:1
+
+            }
+
+          }
+
+
+          team={
+            {
+              name: "Crader's tlub",
+              pfp: logo_ct,
+              description: 'We are just a normal corp trying to fund some money. Money is gonna change the world.',
+              users: [],
+              header: header_team
+
+            }
+          }
         />
 
         <div className='fixed w-[calc(100px)] h-screen flex flex-col items-center l-0 z-2 '>

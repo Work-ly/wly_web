@@ -1,10 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { AiOutlinePlusCircle } from 'react-icons/ai'
 import { LocalTeam } from '../models/Team'
+import { ProjectPopup } from './ProjectPopup'
 
 
 interface Props {
   team: LocalTeam
 }
+
+
+function CreateProject() {
+  const [createProjectOpen, setCreateProjectOpen] = useState(false)
+
+  return (
+    <>
+      <div onClick={() => setCreateProjectOpen(!createProjectOpen)} className='hover:cursor-default'>
+        <a className="transition-all duration-100 ease-linear cursor-pointer hover:text-purple-primary-light text-white md:text-md xl:text-xl'">
+          <i className=""><AiOutlinePlusCircle /></i>
+        </a>
+      </div>
+
+
+      {createProjectOpen ? <ProjectPopup close={() => setCreateProjectOpen(!createProjectOpen)} /> : <></>}
+    </>
+  )
+}
+
 
 export const Team = (props: Props) => {
   return (
@@ -63,23 +84,31 @@ export const Team = (props: Props) => {
           <div className="description h-[30%] ml-[3%] pr-12 text-white line-clamp">
             <p className='mt-4 ml-3'>{props.team.description}</p>
           </div>
-          <div className='h-[70%] bg-white'>
+          <div className='h-[70%]'>
 
 
           </div>
         </div>
-        <div className="w-[35%] h-full ml-[2%] mt-[1%] overflow-y-auto">
-          <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-white rounded-lg w-[90%]">
-            aaaaaaa
+        <div className="w-[35%] h-full ml-[2%] mt-[1%] ">
+          <div className="w-full h-[90%] overflow-y-auto
+          xl:h-[85%]">
+            <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-center text-white rounded-lg w-[90%]">
+              aaaaaaa
+            </div>
+            <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-center text-white rounded-lg w-[90%]">
+              aaaaaaa
+            </div>
+            <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-center text-white rounded-lg w-[90%]">
+              aaaaaaa
+            </div>
+            <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-center text-white rounded-lg w-[90%]">
+              aaaaaaa
+            </div>
           </div>
-          <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-white rounded-lg w-[90%]">
-            aaaaaaa
-          </div>
-          <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-white rounded-lg w-[90%]">
-            aaaaaaa
-          </div>
-          <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-white rounded-lg w-[90%]">
-            aaaaaaa
+          <div className="w-[95%] h-[10%] flex justify-center items-center 
+          xl:h-[15%] ">
+            <CreateProject />
+
           </div>
         </div>
 

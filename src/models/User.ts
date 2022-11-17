@@ -6,6 +6,7 @@
 
 import {LocalTeam} from './Team'
 import {Image} from './Image'
+import { LocalProject } from './Project'
 
 export interface LocalUser {
   name: string
@@ -42,4 +43,10 @@ export interface CreateUserResponse {
 export interface UserTeam {
   name: string,
   role: string
+}
+
+export interface UserProject {
+  role: string,
+  user: LocalUser,
+  project: LocalProject
 }
