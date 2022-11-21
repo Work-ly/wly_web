@@ -10,5 +10,5 @@ export interface Image {
   offset_x: number
   offset_y: number
   type: string
-  data: string 
+  data: string
 }

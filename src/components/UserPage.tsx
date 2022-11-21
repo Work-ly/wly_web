@@ -28,8 +28,8 @@ function EditUser(curUser: LocalUser) {
           {
             name: curUser.name,
             email: curUser.email,
-            pfp: 'pfp',
-            header: 'header',
+            pfp: curUser.pfp,
+            header: curUser.header,
             description: curUser.description,
             teams: [
               {
@@ -65,7 +65,7 @@ export const UserPage = (props: Props) => {
             <div className="pfp w-[120px] ml-10">
               <div className="pfp_img w-[100%]">
                 <img
-                  src={props.user.pfp}
+                  src={props.user.pfp.data}
                   alt="Profile Pic"
                   className="w-full rounded-full border-[1px] shadow-md"
                 />
@@ -94,7 +94,7 @@ export const UserPage = (props: Props) => {
         <div className="w-full h-full gradient-overlay banner">
           <div className="w-full h-full">
             <img
-              src={props.user.header}
+              src={props.user.header.data}
               alt=""
               className="w-full h-full gradient-bt-img z-5"
             />

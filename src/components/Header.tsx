@@ -18,6 +18,8 @@ import { Notification } from '../components/Notification'
 import { LocalUser, UserProject } from '../models/User'
 import { LocalTeam } from '../models/Team'
 import { LocalProject } from '../models/Project'
+import ReactDOM from 'react-dom'
+
 
 interface Props {
   team: LocalTeam,
@@ -94,7 +96,7 @@ function Header(props: Props) {
 
               <a className='flex flex-row items-center justify-end w-32 ml-4 hover:cursor-pointer group' onClick={a}>
                 <div className='w-[40px] h-[40px] mr-2 rounded-full border-2 text-white flex justify-center items-center'>
-                  <img id='usr_img' src={props.user.pfp} className='w-full h-full rounded-full'></img>
+                  <img id='usr_img' src={`data:image/jpeg;base64,${props.user.pfp.data}`} className='w-full h-full rounded-full'></img>
                 </div>
                 <p id='usr_nickname' className='text-sm text-white transition-all duration-300 border-t-2 border-b-2 group-hover:border-b-white border-t-dark border-b-dark'>{props.user.name}</p>
                 <img src={arrow} className='w-[10px] h-[7px] ml-2 mt-1 group-hover:translate-y-[1px] transition-all duration-300 ease-out'></img>

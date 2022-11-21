@@ -22,30 +22,37 @@ import { BsFillCalendarFill, BsPeopleFill } from 'react-icons/bs'
 import { HiDocumentText, HiOutlineShieldExclamation } from 'react-icons/hi'
 import { Doc } from '../components/Doc'
 import { Repos } from '../components/Repos'
-import { UserContext } from '../User';
-import { ReactSession } from 'react-client-session';
+//import { UserContext } from '../User';
 import { LocalUser, UserProject } from '../models/User'
 import { Calendar } from '../components/Calendar'
+import { LocalTeam } from '../models/Team'
 
-interface Props { }
+interface Props { 
+
+
+}
 
 const userData = localStorage.getItem('user')
 const user = (userData != null) ? JSON.parse(userData) : {} as LocalUser
+
+const teamData = localStorage.getItem('team')
+const team = (teamData != null) ? JSON.parse(teamData) : {} as LocalTeam
+
 const Components = [
   <UserPage
     user={
       {
         name: user.name,
         email: user.email,
-        pfp: pfp,
-        header: header,
+        pfp: user.pfp,
+        header: user.header,
         description: user.description,
         teams: [
           {
             pfp: logo_ct,
             header: header,
-            name: 'Nome',
-            description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofhyuieagyuegaf',
+            name: team.name,
+            description: team.description,
             users: [
               {
                 name: 'JozuTm',
@@ -65,9 +72,9 @@ const Components = [
   <Team
     team={
       {
-        name: 'JozuTm',
+        name: team.name,
         pfp: logo_ct,
-        description: 'We are just a normal corp trying to fund some money. Money is gonna change the world.',
+        description: team.description,
         users: [],
         header: header_team
 
@@ -107,11 +114,11 @@ function Home() {
         <Header
           user={
             {
-              name: 'JozuTm',
-              email: 'josueteodoro@gmail.com',
-              pfp: pfp,
-              header: header,
-              description: 'fgiuhayuigfbhuadghbgfhdga90teiq',
+              name: user.name,
+              email: user.email,
+              pfp: user.pfp,
+              header: user.header,
+              description: user.description,
               teams: [
                 {
                   pfp: logo_ct,

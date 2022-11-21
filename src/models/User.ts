@@ -11,8 +11,8 @@ import { LocalProject } from './Project'
 export interface LocalUser {
   name: string
   email: string
-  pfp: string 
-  header: string 
+  pfp: Image 
+  header: Image 
   description: string
   teams: Array<LocalTeam>
 }
