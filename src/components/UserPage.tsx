@@ -65,7 +65,7 @@ export const UserPage = (props: Props) => {
             <div className="pfp w-[120px] ml-10">
               <div className="pfp_img w-[100%]">
                 <img
-                  src={props.user.pfp.data}
+                  src={`data:image/jpeg;base64,${props.user.pfp.data}`}
                   alt="Profile Pic"
                   className="w-full rounded-full border-[1px] shadow-md"
                 />
@@ -75,7 +75,7 @@ export const UserPage = (props: Props) => {
               <div className="flex flex-row items-center">
                 <p className="text-md "> {props.user.name} </p>
                 <a className="ml-2 w-[1%] cursor-pointer">
-                  <EditUser {...props.user}/>
+                  <EditUser {...props.user} />
                   {" "}
                   {" "}
                 </a>
@@ -94,7 +94,7 @@ export const UserPage = (props: Props) => {
         <div className="w-full h-full gradient-overlay banner">
           <div className="w-full h-full">
             <img
-              src={props.user.header.data}
+              src={`data:image/jpeg;base64,${props.user.header.data}`}
               alt=""
               className="w-full h-full gradient-bt-img z-5"
             />
@@ -195,7 +195,7 @@ export const UserPage = (props: Props) => {
 
 
 
-                
+
               </>
             );
           })}
@@ -291,13 +291,13 @@ export const UserPage = (props: Props) => {
 
 
 
-                
+
               </>
             );
           })}
         </div>
 
-        
+
       </div>
     </div>
   );

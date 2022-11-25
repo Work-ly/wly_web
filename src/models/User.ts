@@ -40,6 +40,16 @@ export interface CreateUserResponse {
   firebase_user: FirebaseUser
 }
 
+export interface LoginUserRequest {
+  email: string
+  password: string
+}
+
+export interface LoginUserResponse {
+  wly_user: LocalUser,
+  firebase_user: FirebaseUser
+}
+
 export interface UserTeam {
   name: string,
   role: string

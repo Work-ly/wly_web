@@ -4,10 +4,10 @@
  * date: August 02, 2022
  */
 
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { Input } from '../components/Input'
-import { LoginButton } from '../components/LoginButton'
+import { InputButton } from '../components/InputButton'
 
 import { redirectToGithub } from '../util/Github'
 import { UserContext } from '../User';
@@ -18,42 +18,72 @@ import User from '../dist/images/user_login.png'
 
 import { BsGithub } from "react-icons/bs";
 import { BsGoogle } from "react-icons/bs";
-import { useNavigate } from 'react-router-dom';
+import { LocalUser, LoginUserRequest } from '../models/User';
+import { toast } from 'react-toastify';
 
 export interface Props { }
 
 function Login(props: Props): JSX.Element {
-  const { user, setUser } = useContext(UserContext)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  
+  const user = localStorage.getItem('user')
 
-  const navigate = useNavigate()
-
-  const registerUser = async () => {
-    const url: string = 'http://' +
-      process.env.REACT_APP_WLY_BACK_HOST + ':' +
-      process.env.REACT_APP_WLY_BACK_PORT + '/user'
+  const login = async (user: LoginUserRequest | null) => {
+    const url: string =
+      'http://' +
+      process.env.REACT_APP_WLY_BACK_HOST +
+      ':' +
+      process.env.REACT_APP_WLY_BACK_PORT +
+      '/user/login'
 
     fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)
-    }).then((response) => {
-      if (response.ok) {
-        console.log(user)
+    }).then((resp) => {
+      if (resp.ok) {
+        return resp.json()
       } else {
-        setUser(null)
+        toast("Could not Log In", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "dark",
+        })
+      }
+    }).then((res) => {
+      if (res) {
+        toast('Logged In Succesfully', {
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: 'dark',
+        })
+
+        localStorage.setItem('user', JSON.stringify(res.wly_user))
+
+        window.location.href = '/home'
       }
     })
   }
 
-  const getUser = async () => {
+  const signInWithGithub = async () => {
     redirectToGithub().then((newUser) => {
-      setUser(newUser)
-      registerUser()
+      login(newUser)
     })
   }
 
   if (user != null) {
-    navigate('/home')
+    window.location.href = '/home'
     return <></>
   } else {
     return (
@@ -73,17 +103,36 @@ function Login(props: Props): JSX.Element {
                 <div className='w-1/2 flex flex-col justify-center space-y-8 
                xl:w-[330px] xl:mr-24
                 2xl:w-[600px] 2xl:h-[900px]'>
-                  <Input onChange={(e: any) => {}}label="Email" type="text" placeholder="user 123"/>
-                  <Input onChange={(e: any) => {}}label="Password" type="password" placeholder="•••••••••••••••••••••" />
+                  <Input
+                  onChange={(e: any) => {
+                    setEmail(e.target.value)
+                  }}
+                  label="Email"
+                  type="text"
+                  placeholder="richarlison9@gmail.com"/>
+                  <Input
+                  onChange={(e: any) => {
+                    setPassword(e.target.value)
+                  }}
+                  label="Password"
+                  type="password"
+                  placeholder="•••••••••••••••••••••"/>
 
-                  <LoginButton onClick={() => {}}/>
+                  <InputButton value="Log In" onClick={() => {
+                    login(
+                      {
+                        email: email,
+                        password: password
+                      } as LoginUserRequest
+                    )
+                  }}/>
                   <div className='flex items-center justify-center text-xs text-white'>
                     <a href='/signup' className='underline transition-colors ease-out decoration-solid duration-250 hover:text-purple-secondary-light 2xl:text-lg'>Create an account instead</a>
 
                   </div>
 
                   <div className='flex flex-row justify-center w-1/2 m-auto mt-4'>
-                    <button onClick={getUser} className='flex items-center justify-center w-8 h-8 mr-5 text-white transition-colors duration-300 ease-out border-2 rounded-full hover:text-purple-primary-light 2xl:w-14 2xl:h-14 2xl:text-xl ' ><BsGithub /></button>
+                    <button onClick={signInWithGithub} className='flex items-center justify-center w-8 h-8 mr-5 text-white transition-colors duration-300 ease-out border-2 rounded-full hover:text-purple-primary-light 2xl:w-14 2xl:h-14 2xl:text-xl ' ><BsGithub /></button>
                     <button className='flex items-center justify-center w-8 h-8 text-white transition-colors duration-300 ease-out border-2 rounded-full hover:text-purple-primary-light 2xl:w-14 2xl:h-14 2xl:text-xl ' ><BsGoogle /></button>
                   </div>
                 </div>

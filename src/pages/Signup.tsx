@@ -7,7 +7,7 @@
 import React, { useContext, useState } from "react"
 
 import { Input } from "../components/Input"
-import { LoginButton } from "../components/LoginButton"
+import { InputButton } from "../components/InputButton"
 
 import wly from "../dist/images/W.LY.svg"
 import Shade from "../dist/images/purple_shade.svg"
@@ -25,8 +25,6 @@ import {
 import { Message } from "../models/Message"
 import { toast, ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { UserContext } from "../User"
-import { useNavigate } from "react-router-dom"
 
 interface Props { }
 
@@ -34,11 +32,8 @@ function Signup(props: Props) {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const { user, setUser } = useContext(UserContext)
 
-  const navigate = useNavigate()
-
-  async function signUp() {
+  const signUp = async () => {
     const createUserReq: CreateUserRequest = {
       name: username,
       email: email,
@@ -105,11 +100,11 @@ function Signup(props: Props) {
             progress: undefined,
             theme: 'dark',
           })
+
+          localStorage.setItem('user', JSON.stringify(res.wly_user))
+
+          window.location.href = '/home'
         }
-
-        localStorage.setItem('user', JSON.stringify(res.wly_user))
-
-        window.location.href = '/home'
       })
       .catch((err) => {
         console.log(err)
@@ -142,7 +137,7 @@ function Signup(props: Props) {
                   }}
                   label="Username"
                   type="text"
-                  placeholder="user 123"
+                  placeholder="Richarlison9"
                 />
                 <Input
                   onChange={(e: any) => {
@@ -150,7 +145,7 @@ function Signup(props: Props) {
                   }}
                   label="Email"
                   type="text"
-                  placeholder="user123@email.com"
+                  placeholder="richarlison9@gmail.com"
                 />
                 <Input
                   onChange={(e: any) => {
@@ -160,7 +155,7 @@ function Signup(props: Props) {
                   type="password"
                   placeholder="•••••••••••••••••••••"
                 />
-                <LoginButton onClick={signUp} />
+                <InputButton value="Sign Up" onClick={signUp} />
                 <div className="m-auto mt-1 text-xs text-white">
                   <a
                     href="/login"

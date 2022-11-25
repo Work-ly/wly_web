@@ -5,15 +5,15 @@
  */
 
 import { getAuth, GithubAuthProvider, signInWithPopup } from '@firebase/auth';
-import { LocalUser } from '../models/User';
+import { LocalUser, LoginUserRequest } from '../models/User';
 import { LocalTeam } from '../models/Team'
 import { Image } from '../models/Image';
 
-export async function redirectToGithub(): Promise<LocalUser | null> {
+export async function redirectToGithub(): Promise<LoginUserRequest | null> {
   const provider: GithubAuthProvider = new GithubAuthProvider();
   provider.addScope('user')
 
-  var user = {} as LocalUser
+  var user = {} as LoginUserRequest
 
   const auth = getAuth();
   await signInWithPopup(auth, provider).then((result) => {
@@ -22,13 +22,9 @@ export async function redirectToGithub(): Promise<LocalUser | null> {
 
     const fbUser = result.user;
     user = {
-        name: (fbUser?.displayName != null) ? fbUser?.displayName : '',
-        email: (fbUser?.email != null) ? fbUser?.email : '', 
-        pfp: (fbUser.photoURL != null) ? fbUser.photoURL : '',
-        header: {} as Image,
-        description: '',
-        teams: [{} as LocalTeam]
-    }
+        email: (fbUser?.email != null) ? fbUser?.email : '',
+        password: ''
+    } as LoginUserRequest
   }).catch((error) => {
     console.log(error.code, error.message)
 
