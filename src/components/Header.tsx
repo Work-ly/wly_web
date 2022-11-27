@@ -56,7 +56,7 @@ function Dropdowns() {
 function Header(props: Props) {
   return (
     <>
-      <div className='absolute z-50 flex flex-row w-screen h-16'>
+      <div className='absolute z-50 flex flex-row w-screen h-16 '>
         <div className='w-[calc(100px)] h-full flex justify-center items-center ml-[5px]'>
           <img src={wly} className="w-[calc(50px)] absolute z-10" />
         </div>

@@ -15,4 +15,6 @@
 
 body {
   overflow-x: hidden;
+  --tw-scroll-snap-strictness: mandatory;
+  scroll-snap-type: y var(--tw-scroll-snap-strictness);
 }

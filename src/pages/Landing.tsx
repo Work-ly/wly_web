@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import './Landing.css'
 import Logo from '../dist/images/Logo.svg'
 import Shade from '../dist/images/shade.svg'
+import Design from '../dist/images/Design_example.png'
 
 
 interface Props { }
@@ -15,9 +16,9 @@ interface Props { }
 function Landing(props: Props) {
   return (
     <>
-      <div className=' w-screen h-[300vh] bg-dark-02'>
+      <div className=' w-screen h-[350vh] bg-dark-02'>
         <img src={Shade} className="fixed z-0 h-full" />
-        <div className='fixed z-50 flex flex-row items-center justify-between w-full h-20 landing-navbar xl:h-28 '>
+        <div className='fixed z-50 flex flex-row items-center justify-between w-full h-20 landing-navbar xl:h-28 bg-gradient-to-b from-dark to-transparent'>
 
           <div className='flex items-center justify-around w-2/5 h-full ml-10 text-white text-md xl:text-lg '>
             <a href='/' className='hover:underline xl:text-xl '>Home</a>
@@ -33,7 +34,7 @@ function Landing(props: Props) {
         </div>
 
 
-        <div className='fade absolute flex flex-row w-full h-[100vh] content items-center'>
+        <div className='fade relative flex flex-row w-full h-[100vh] content items-center snap-always snap-center'>
           <div className="flex items-center justify-around w-full h-64">
             <div className="w-1/2 h-full ml-10 xl:ml-20">
               <img src={Logo} className="absolute z-10 w-1/4 xl:mr-20" />
@@ -47,7 +48,40 @@ function Landing(props: Props) {
 
           </div>
         </div>
+        <div className="h-[100vh] relative snap-always snap-center">
+          <div className="title h-[5%] flex justify-center items-center">
+            <p className='text-white md:text-lg xl:text-xl'>An intuitive and simple design</p>
+          </div>
+          <div className="image h-[68%] flex justify-center items-center">
+            <img src={Design} alt="" className='w-[70%]' />
+          </div>
+          <div className="down-text h-[18%] flex justify-center items-center">
+            <p className='text-center w-[35%] text-white'>Focusing on your experience, Work.ly brings you a simple design, which guarantees you a game changer in terms of optimizing time </p>
+          </div>
+        </div>
+        <div className="h-[150vh]  relative flex flex-col justify-center">
+          <div className="h-2/3 w-full flex justify-center items-center">
+            <div className="card w-[80%] h-[40%] flex justify-around items-center">
+              <div className="card-01 w-[30%] h-[100%] bg-dark-02 border-[1px] border-white rounded-lg">
+                <div className="h-[30%] w-full flex justify-center items-end">
+                  <p className='text-white text-center text-md'> A huge lack of tools</p>
+                </div>
+                <div className="h-[70%] flex justify-center items-center">
+                  <p className="w-[90%] text-white text-center text-sm">Focusing on your experience, Work<span className='text-purple-primary-light'>.</span>ly brings you a simple design, which guarantees you a game changer in terms of optimizing time </p>
+                </div>
+              </div>
+              <div className="card-01 w-[30%] h-[100%] bg-dark-02 border-[1px] border-white rounded-lg">
 
+                a
+              </div>
+              <div className="card-01 w-[30%] h-[100%] bg-dark-02 border-[1px] border-white rounded-lg">
+
+                
+              </div>
+            </div>
+          </div>
+          <div className="h-1/3 bg-black"></div>
+        </div>
 
       </div>
     </>

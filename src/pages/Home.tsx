@@ -137,7 +137,7 @@ function Home() {
           }
           project={
             {
-              name:'Internship',
+              name: user.project,
               description:'a',
               id:1
 
