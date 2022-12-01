@@ -33,18 +33,18 @@ function EditUser(curUser: LocalUser) {
             description: curUser.description,
             teams: [
               {
-                pfp: 'pfp',
-                header: 'header',
-                name: 'Nome',
-                description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofh',
+                pfp: 'a',
+                header: 'a',
+                name: 'a',
+                description: 'a',
                 users: [
                   {
-                    name: 'JozueTm',
-                    role: 'Admin'
+                    name: 'a',
+                    role: 'a'
                   },
                   {
-                    name: 'JozueTm2',
-                    role: 'Member'
+                    name: 'a',
+                    role: 'a'
                   }
                 ]
               }
@@ -113,7 +113,7 @@ export const UserPage = (props: Props) => {
                 <div className="team h-[30%] flex flex-row">
                   <div className="team-img-div w-[30%]">
                     <img
-                      src={team.pfp}
+                      src={`data:image/jpeg;base64,${team.pfp}`}
                       alt=""
                       className="h-full team-img w-max rounded-tl-10"
                     />
@@ -209,7 +209,7 @@ export const UserPage = (props: Props) => {
                 <div className="team h-[30%] flex flex-row">
                   <div className="team-img-div w-[30%]">
                     <img
-                      src={team.pfp}
+                      src={`data:image/jpeg;base64,${team.pfp}`}
                       alt=""
                       className="h-full team-img w-max rounded-tl-10"
                     />

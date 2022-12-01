@@ -24,7 +24,7 @@ import ReactDOM from 'react-dom'
 interface Props {
   team: LocalTeam,
   user: LocalUser,
-  project: LocalProject
+  project: UserProject
 
 }
 
@@ -76,7 +76,7 @@ function Header(props: Props) {
               <img src={project} className='w-[calc(20px)]'></img>
               <div className="h-[30%] flex justify-center items-center">
                 <p id='team' className='ml-2 text-sm text-white transition-all duration-300 border-t-2 border-b-2 group-hover:border-b-white border-t-dark border-b-dark'>
-                  {props.project.name}
+                  {props.project.project.name}
                   
                    </p>
               </div>

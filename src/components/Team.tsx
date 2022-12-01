@@ -37,14 +37,16 @@ export const Team = (props: Props) => {
             <div className='w-[80%] flex flex-row items-end'>
               <div className='pfp w-[120px] ml-10'>
                 <div className="pfp_img w-[100%] h-full">
-                  <img src={props.team.pfp} alt="Profile Pic" className="w-full rounded-full border-[1px]" />
+                  <img
+                    src={`data:image/jpeg;base64,${props.team.pfp}`}
+                    alt="Profile Pic" className="w-full rounded-full border-[1px]" />
                 </div>
 
               </div>
               <div className='flex flex-col ml-3 info'>
                 <div className='flex flex-col items-start'>
                   <p className='text-md' > {props.team.name} </p>
-                  <p> 2 members </p>
+                  <p> </p>
                 </div>
               </div>
 
@@ -90,20 +92,14 @@ export const Team = (props: Props) => {
           </div>
         </div>
         <div className="w-[35%] h-full ml-[2%] mt-[1%] ">
-          <div className="w-full h-[90%] overflow-y-auto
+          <div className="w-full h-max overflow-y-auto
           xl:h-[85%]">
             <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-center text-white rounded-lg w-[90%]">
-              aaaaaaa
+              {
+
+              }
             </div>
-            <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-center text-white rounded-lg w-[90%]">
-              aaaaaaa
-            </div>
-            <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-center text-white rounded-lg w-[90%]">
-              aaaaaaa
-            </div>
-            <div className="description h-24 ml-[3%] mt-3 bg-dark-02 truncate text-center text-white rounded-lg w-[90%]">
-              aaaaaaa
-            </div>
+
           </div>
           <div className="w-[95%] h-[10%] flex justify-center items-center 
           xl:h-[15%] ">

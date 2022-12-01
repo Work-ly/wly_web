@@ -26,8 +26,9 @@ import { Repos } from '../components/Repos'
 import { LocalUser, UserProject } from '../models/User'
 import { Calendar } from '../components/Calendar'
 import { LocalTeam } from '../models/Team'
+import { LocalProject } from '../models/Project'
 
-interface Props { 
+interface Props {
 
 
 }
@@ -37,6 +38,9 @@ const user = (userData != null) ? JSON.parse(userData) : {} as LocalUser
 
 const teamData = localStorage.getItem('team')
 const team = (teamData != null) ? JSON.parse(teamData) : {} as LocalTeam
+
+
+
 
 const Components = [
   <UserPage
@@ -73,7 +77,7 @@ const Components = [
     team={
       {
         name: team.name,
-        pfp: logo_ct,
+        pfp: team.pfp,
         description: team.description,
         users: [],
         header: header_team
@@ -138,15 +142,13 @@ function Home() {
           }
           project={
             {
-              name: user.project,
-              description:'a',
-              id:1
+              role: 'carlos',
+              project: {} as LocalProject,
+              user: {} as LocalUser
 
             }
 
           }
-
-
           team={
             {
               name: "Crader's tlub",
