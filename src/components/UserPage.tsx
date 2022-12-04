@@ -65,7 +65,7 @@ export const UserPage = (props: Props) => {
             <div className="pfp w-[120px] ml-10">
               <div className="pfp_img w-[100%]">
                 <img
-                  src={`data:image/jpeg;base64,${props.user.pfp.data}`}
+                  src={`data:${props.user.pfp.type},${props.user.pfp.data}`}
                   alt="Profile Pic"
                   className="w-full rounded-full border-[1px] shadow-md"
                 />
@@ -94,9 +94,9 @@ export const UserPage = (props: Props) => {
         <div className="w-full h-full gradient-overlay banner">
           <div className="w-full h-full">
             <img
-              src={`data:image/jpeg;base64,${props.user.header.data}`}
+              src={`data:${props.user.header.type},${props.user.header.data}`}
               alt=""
-              className="w-full h-full gradient-bt-img z-5"
+              className="w-full h-full object-cover gradient-bt-img z-5"
             />
           </div>
         </div>
@@ -288,9 +288,6 @@ export const UserPage = (props: Props) => {
                     </div>
                   </div>
                 </div>
-
-
-
 
               </>
             );

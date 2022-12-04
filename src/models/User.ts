@@ -60,3 +60,10 @@ export interface UserProject {
   user: LocalUser,
   project: LocalProject
 }
+
+export interface UpdateUserRequest {
+  name: string,
+  description: string,
+  pfp: Image,
+  header: Image
+}
