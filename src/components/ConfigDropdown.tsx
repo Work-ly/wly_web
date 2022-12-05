@@ -9,6 +9,7 @@ import { MdExitToApp } from "react-icons/md"
 
 import React from 'react'
 import { LocalUser } from "../models/User"
+import { useNavigate } from "react-router-dom"
 
 interface Props {
 user: LocalUser
@@ -16,9 +17,16 @@ user: LocalUser
 }
 
 
+
 function exit(){
+  
+  const navigate = useNavigate()  
+  
   window.localStorage.clear()
   window.location.reload()
+  
+  navigate("/")
+
   
 }
 
