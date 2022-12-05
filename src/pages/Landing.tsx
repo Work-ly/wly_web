@@ -85,25 +85,26 @@ function Landing(props: Props) {
               ">
                 <div className="h-[30%] w-full flex justify-center items-end transition-all duration-200 ease-out
                  ">
-                  <p className='text-center text-white pointer-events-none md:text-md xl:text-xl'> A huge lack of tools</p>
+                  <p className='text-center text-white pointer-events-none md:text-md xl:text-xl '>Plan and organize your project </p>
                 </div>
                 <div className="h-[70%] flex justify-center items-center transition-all duration-250 ease-out
                 
                 ">
-                  <p className="w-[90%] text-white text-center md:text-sm xl:text-lg pointer-events-none">Focusing on your experience, Work<span className='text-purple-primary-light'>.</span>ly brings you a simple design, which guarantees you a game changer in terms of optimizing time </p>
+                  <p className="w-[90%] text-white text-center md:text-sm xl:text-lg pointer-events-none">With our simplified design and our tools, you can focus on what really matters</p>
                 </div>
               </div>
               <div className="card-03 w-[30%] h-[90%] bg-dark-02 border-[1px] border-white rounded-lg transiton-all duration-200 group ease-out
               hover:scale-105 hover:shadow-[0px_1px_10px_rgba(255,255,255,0.25)]
               ">
-                <div className="h-[30%] w-full flex justify-center items-end transition-all duration-200 ease-out
+                <div className="h-[30%] w-full flex flex-col justify-center items-center transition-all duration-200 ease-out mt-10
                  ">
-                  <p className='text-center text-white pointer-events-none md:text-md xl:text-xl'> A huge lack of tools</p>
+                  <p className='text-center text-white pointer-events-none md:text-md xl:text-xl'>We optimize time</p>
+                  <p className='text-center text-white pointer-events-none md:text-md xl:text-xl'>So you don't waste it</p>
                 </div>
                 <div className="h-[70%] flex justify-center items-center transition-all duration-250 ease-out
                 
                 ">
-                  <p className="w-[90%] text-white text-center md:text-sm xl:text-lg pointer-events-none">Focusing on your experience, Work<span className='text-purple-primary-light'>.</span>ly brings you a simple design, which guarantees you a game changer in terms of optimizing time </p>
+                  <p className="w-[90%] text-white text-center md:text-sm xl:text-lg pointer-events-none mb-12">Spend your time not thinking about how much time you do have, instead, think of what you're gonna do with it </p>
                 </div>
               </div>
             </div>
