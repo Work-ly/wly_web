@@ -15,7 +15,7 @@ function CreateProject() {
   return (
     <>
       <div onClick={() => setCreateProjectOpen(!createProjectOpen)} className='hover:cursor-default'>
-        <a className="transition-all duration-100 ease-linear cursor-pointer hover:text-purple-primary-light text-white md:text-md xl:text-xl'">
+        <a className="text-white transition-all duration-100 ease-linear cursor-pointer hover:text-purple-primary-light md:text-md xl:text-xl'">
           <i className=""><AiOutlinePlusCircle /></i>
         </a>
       </div>
@@ -34,8 +34,8 @@ export const Team = (props: Props) => {
         <div className="w-full h-full rounded-tl-lg rounded-tr-lg teaminfo">
 
           <div className="user-info text-white flex h-[30%] w-[89%] flex-row absolute items-end justify-between ">
-            <div className='w-[80%] flex flex-row items-end'>
-              <div className='pfp w-[120px] ml-10'>
+            <div className='flex flex-row items-end '>
+              <div className='pfp w-[8rem] ml-10'>
                 <div className="pfp_img w-[100%] h-full">
                   <img
                     src={`data:image/jpeg;base64,${props.team.pfp}`}

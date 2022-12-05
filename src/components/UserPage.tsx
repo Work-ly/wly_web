@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
 import { FiEdit } from "react-icons/fi";
+import { AiFillPlusCircle } from "react-icons/ai"
 import { LocalUser, FirebaseUser } from "../models/User";
 import { UserEditPopup } from "../components/UserEditPopup";
 import { LocalProject } from "../models/Project";
@@ -43,8 +44,8 @@ function EditUser(curUser: LocalUser) {
           }}
         />
       ) : (
-          <></>
-        )}
+        <></>
+      )}
     </>
   );
 }
@@ -54,7 +55,10 @@ function CreateTeam() {
 
   return (
     <>
-      <button onClick={() => setTeamOpen(!teamOpen)}>Create team</button>
+      <button onClick={() => setTeamOpen(!teamOpen)} className="flex flex-col items-center justify-around h-10 pt-6 pb-6 pl-4 pr-4 text-white transition-all duration-200 border-2 border-white rounded-lg group">
+        <p className="transition-all duration-200 group-hover:-translate-y-[1px]"> Team</p>
+        <i className="transition-all duration-200 group-hover:scale-105 group-hover:text-purple-primary-light"><AiFillPlusCircle /></i>
+      </button>
 
       {teamOpen ?
         <TeamCreatePopup close={() => setTeamOpen(!teamOpen)} />
@@ -103,8 +107,8 @@ export const UserPage = (props: Props) => {
     <div className="flex flex-col items-center w-full h-full">
       <div className="userinfo rounded-tl-lg rounded-tr-lg w-full h-[35%] ">
         <div className="user-info text-white flex h-[30%] w-[89%] flex-row absolute items-end justify-between">
-          <div className="w-[40%] flex flex-row items-end">
-            <div className="pfp w-[120px] ml-10">
+          <div className="flex flex-row items-end ">
+            <div className="ml-10 pfp w-[8rem]">
               <div className="pfp_img w-[100%]">
                 <img
                   src={`data:${props.user.pfp.type},${props.user.pfp.data}`}
@@ -136,7 +140,7 @@ export const UserPage = (props: Props) => {
             <img
               src={`data:${props.user.header.type},${props.user.header.data}`}
               alt=""
-              className="w-full h-full object-cover gradient-bt-img z-5 object-cover rounded-t-lg"
+              className="object-cover w-full h-full rounded-t-lg gradient-bt-img z-5"
             />
           </div>
         </div>
@@ -145,19 +149,19 @@ export const UserPage = (props: Props) => {
       <div className="h-[8%] w-full flex items-end ">
         <p className="absolute ml-2 text-white">Teams</p>
       </div>
-      <div className="userteams w-[99%] h-[50%] flex flex-row mt-1 overflow-x-auto">
-        
-          {
-            (teams.teams != undefined && teams.teams != null)
-              ? (teams.teams.length > 0)
-                ? (teams.teams.map((team, i) => {
-                  console.log(team)
+      <div className="userteams w-[99%] h-[50%] flex flex-row mt-1 overflow-x-auto ">
 
-                  return <UserTeamCard team={team} />
-                }))
-                : <p className="text-white">You're not in any teams.</p>
-              : <></>
-          }
+        {
+          (teams.teams != undefined && teams.teams != null)
+            ? (teams.teams.length > 0)
+              ? (teams.teams.map((team, i) => {
+                console.log(team)
+
+                return <UserTeamCard team={team} />
+              }))
+              : <p className="text-white">You're not in any teams.</p>
+            : <></>
+        }
         <CreateTeam />
 
       </div>

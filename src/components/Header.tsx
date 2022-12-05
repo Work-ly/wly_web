@@ -27,6 +27,44 @@ interface Props {
   project: UserProject;
 }
 
+interface Config {
+  user: LocalUser
+}
+
+function Config(props: Config) {
+
+  const [cfgOpen, setCfgOpen] = useState(false)
+
+  return (
+    <>
+      <a className="flex flex-row items-center justify-end ml-4 w-max hover:cursor-pointer group" onClick={() => setCfgOpen(!cfgOpen)}>
+        <div className="w-[40px] h-[40px] mr-2 rounded-full border-2 text-white flex justify-end items-center ">
+          <img
+            id="usr_img"
+            src={`data:${props.user.pfp.type},${props.user.pfp.data}`}
+            className="w-full h-full rounded-full"
+          ></img>
+        </div>
+        <p
+        id="usr_nickname"
+        className='text-sm text-white transition-all duration-300 border-t-2 border-b-2 group-hover:border-b-white border-t-dark border-b-dark'
+      >
+        {props.user.name}
+      </p> 
+        <img
+          src={arrow}
+          className="w-[10px] h-[7px] ml-2 mt-1 group-hover:translate-y-[1px] transition-all duration-300 ease-out"
+        ></img>
+      </a>
+      {cfgOpen ? <ConfigDropdown
+        user={{ name: props.user.name } as LocalUser} 
+
+      /> : <></>}
+    </>
+  )
+}
+
+
 function Dropdowns() {
   const [chatOpen, setChatOpen] = useState(false);
   const [ntcOpen, setNtcOpen] = useState(false);
@@ -60,11 +98,9 @@ function Dropdowns() {
 }
 
 function Header(props: Props) {
-  const [cfgOpen, setCfgOpen] = useState(false);
-
   return (
     <>
-      <div className="absolute z-50 flex flex-row w-screen h-16 ">
+      <div className="absolute z-50 flex flex-row w-[98%] h-16 ">
         <div className="w-[calc(100px)] h-full flex justify-center items-center ml-[5px]">
           <img src={wly} className="w-[calc(50px)] absolute z-10" />
         </div>
@@ -95,36 +131,30 @@ function Header(props: Props) {
             </a>
           </div>
 
-          <div className=" w-[calc(300px)] flex flex-row justify-center items-center mt-0">
+          <div className=" w-[calc(300px)] flex flex-row justify-end items-center mt-0">
             <div className="flex flex-row items-center justify-around w-24 text-white icons">
               <Dropdowns />
             </div>
-            <div>
-              <a
-                className="flex flex-row items-center justify-end w-max ml-4 hover:cursor-pointer group"
-                onClick={() => {
-                  setCfgOpen(!cfgOpen);
-                  return <>{cfgOpen ? <ConfigDropdown /> : <></>}</>;
-                }}
-              >
-                <div className="w-[40px] h-[40px] mr-2 rounded-full border-2 text-white flex justify-center items-center">
-                  <img
-                    id="usr_img"
-                    src={`data:${props.user.pfp.type},${props.user.pfp.data}`}
-                    className="w-full h-full rounded-full"
-                  ></img>
-                </div>
-                <p
-                  id="usr_nickname"
-                  className="text-sm text-white transition-all duration-300 border-t-2 border-b-2 group-hover:border-b-white border-t-dark border-b-dark"
-                >
-                  {props.user.name}
-                </p>
-                <img
-                  src={arrow}
-                  className="w-[10px] h-[7px] ml-2 mt-1 group-hover:translate-y-[1px] transition-all duration-300 ease-out"
-                ></img>
-              </a>
+            <div className="justify-end w-max">
+
+
+              <Config
+                user={
+                  {
+                    name: props.user.name,
+                    pfp: props.user.pfp,
+                    header: props.user.header,
+                    description: props.user.description,
+                    email: props.user.email,
+                    teams: []
+                  }
+                }
+
+
+              />
+
+
+
             </div>
           </div>
         </div>

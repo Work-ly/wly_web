@@ -14,8 +14,8 @@ interface Props {
 export const TeamCreatePopup = (props: Props) => {
   const [teamname, setTeamname] = useState("");
   const [description, setDescription] = useState("");
-  const [pfp, setPfp] = useState({data: ""} as Image);
-  const [header, setHeader] = useState({data: ""} as Image);
+  const [pfp, setPfp] = useState({ data: "" } as Image);
+  const [header, setHeader] = useState({ data: "" } as Image);
 
   const create = async () => {
     const url: string =
@@ -76,7 +76,7 @@ export const TeamCreatePopup = (props: Props) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-screen h-screen bg-low-opacity-black hover:cursor-default">
+    <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-screen h-screen text-white bg-low-opacity-black hover:cursor-default">
       <a
         onClick={props.close}
         className="absolute top-[7%] right-[28.5%]  transition-all duration-100 ease-linear cursor-pointer hover:text-purple-primary-light"
@@ -88,7 +88,7 @@ export const TeamCreatePopup = (props: Props) => {
 
       <div className="w-[45%] h-[90%] border-[2px] border-white rounded-lg bg-dark flex flex-col ">
         <div className="w-full h-[8%] flex justify-center items-center">
-          <p className="md:text-xl xl:text-xl2">Edit your info</p>
+          <p className=" md:text-xl xl:text-xl2">Create a Team</p>
         </div>
         <div className="w-full h-[20%] flex flex-col justify-center items-center mt-[15px]">
           <p className="description md:text-md xl:text-lg w-[80%]"> Name: </p>
@@ -207,7 +207,7 @@ export const TeamCreatePopup = (props: Props) => {
           </button>
           <input
             type="submit"
-            className="w-[35%] h-[70%] bg-purple-primary-light text-white text-lg rounded-lg mr-20
+            className="w-[35%] h-[70%] bg-purple-primary-light  text-lg rounded-lg mr-20
           transition duration-200 ease-in hover:bg-dark-02 cursor-pointer"
             value="Create"
             onClick={create}
