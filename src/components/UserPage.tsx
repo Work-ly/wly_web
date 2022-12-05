@@ -9,6 +9,7 @@ import { LocalTeam } from "../models/Team";
 import { setConstantValue } from "typescript";
 import { setEnvironmentData } from "worker_threads";
 import { UserTeamCard } from "./UserTeamCard";
+import { TeamCreatePopup } from "./TeamCreatePopup"
 
 interface Props {
   user: LocalUser;
@@ -42,10 +43,24 @@ function EditUser(curUser: LocalUser) {
           }}
         />
       ) : (
-        <></>
-      )}
+          <></>
+        )}
     </>
   );
+}
+
+function CreateTeam() {
+  const [teamOpen, setTeamOpen] = useState(false)
+
+  return (
+    <>
+      <button onClick={() => setTeamOpen(!teamOpen)}>Create team</button>
+
+      {teamOpen ?
+        <TeamCreatePopup close={() => setTeamOpen(!teamOpen)} />
+        : <></>}
+    </>
+  )
 }
 
 interface LocalTeams {
@@ -121,7 +136,7 @@ export const UserPage = (props: Props) => {
             <img
               src={`data:${props.user.header.type},${props.user.header.data}`}
               alt=""
-              className="w-full h-full object-cover gradient-bt-img z-5"
+              className="w-full h-full object-cover gradient-bt-img z-5 object-cover rounded-t-lg"
             />
           </div>
         </div>
@@ -130,18 +145,21 @@ export const UserPage = (props: Props) => {
       <div className="h-[8%] w-full flex items-end ">
         <p className="absolute ml-2 text-white">Teams</p>
       </div>
-      <div className="userteams w-[99%] h-[50%] flex flex-row items-center mt-1">
-        <>
-        {
-          (teams.teams != null || teams.teams != undefined)
-            ? teams.teams.map((team, i) => {
-              console.log(team)
-              
-              return <UserTeamCard team={team}/>
-            })
-            : <></>
-        }
-        </>
+      <div className="userteams w-[99%] h-[50%] flex flex-row mt-1 overflow-x-auto">
+        
+          {
+            (teams.teams != undefined && teams.teams != null)
+              ? (teams.teams.length > 0)
+                ? (teams.teams.map((team, i) => {
+                  console.log(team)
+
+                  return <UserTeamCard team={team} />
+                }))
+                : <p className="text-white">You're not in any teams.</p>
+              : <></>
+          }
+        <CreateTeam />
+
       </div>
     </div>
   );

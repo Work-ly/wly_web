@@ -25,6 +25,7 @@ import {
 import { Message } from "../models/Message"
 import { toast, ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { Image } from "../models/Image"
 
 interface Props { }
 
@@ -40,21 +41,11 @@ function Signup(props: Props) {
       description: "",
       password: password,
       pfp: {
-        width: 0,
-        height: 0,
-        offset_x: 0,
-        offset_y: 0,
-        type: "",
-        data: "",
-      },
+        data: ""
+      } as Image,
       header: {
-        width: 0,
-        height: 0,
-        offset_x: 0,
-        offset_y: 0,
-        type: "",
-        data: "",
-      },
+        data: ""
+      } as Image,
     }
 
     const uri: string =
@@ -102,6 +93,7 @@ function Signup(props: Props) {
           })
 
           localStorage.setItem('user', JSON.stringify(res.wly_user))
+          localStorage.setItem("fb_user", JSON.stringify(res.firebase_user))
 
           window.location.href = '/home'
         }

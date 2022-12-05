@@ -14,3 +14,11 @@ export interface LocalTeam {
   description: string
   users: Array<UserTeam>
 }
+
+
+export interface CreateTeamRequest {
+  name: string
+  description: string
+  pfp: Image
+  header: Image
+}

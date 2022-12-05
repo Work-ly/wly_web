@@ -22,7 +22,7 @@ import { LocalProject } from "../models/Project";
 import ReactDOM from "react-dom";
 
 interface Props {
-  team: LocalTeam;
+  team: LocalTeam
   user: LocalUser;
   project: UserProject;
 }
@@ -33,9 +33,6 @@ function Dropdowns() {
 
   return (
     <>
-    {
-      //<ConfigDropdown />
-    }
       <a
         onClick={() => setChatOpen(!chatOpen)}
         className="flex items-center justify-center group "
@@ -64,6 +61,7 @@ function Dropdowns() {
 
 function Header(props: Props) {
   const [cfgOpen, setCfgOpen] = useState(false);
+
   return (
     <>
       <div className="absolute z-50 flex flex-row w-screen h-16 ">

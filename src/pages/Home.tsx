@@ -30,8 +30,6 @@ import { LocalTeam } from '../models/Team'
 import { LocalProject } from '../models/Project'
 
 interface Props {
-
-
 }
 
 const userData = localStorage.getItem('user')
@@ -40,35 +38,12 @@ const user = (userData != null) ? JSON.parse(userData) : {} as LocalUser
 const teamData = localStorage.getItem('team')
 const team = (teamData != null) ? JSON.parse(teamData) : {} as LocalTeam
 
-
-
-
 const Components = [
   <UserPage
-    user={
-      {
-        name: user.name,
-        email: user.email,
-        pfp: user.pfp,
-        header: user.header,
-        description: user.description,
-        teams: []
-      }
-    }
-
+    user={user}
   />,
   <Team
-    team={
-      {
-        name: team.name,
-        description: team.description,
-        pfp: team.pfp,
-        header: {
-          data: header_team
-        } as Image,
-        users: [],
-      }
-    }
+    team={team}
   />,
   <Doc />,
   <Repos />,
@@ -102,33 +77,7 @@ function Home() {
     <>
       <div className='absolute w-screen h-screen'>
         <Header
-          user={
-            {
-              name: user.name,
-              email: user.email,
-              pfp: user.pfp,
-              header: user.header,
-              description: user.description,
-              teams: [
-                {
-                  pfp: {
-                    data: logo_ct
-                  } as Image,
-                  header: {
-                    data: header
-                  } as Image,
-                  name: 'Nome',
-                  description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofhyuieagyuegaf',
-                  users: [
-                    {
-                      name: 'JozuTm',
-                      role: 'Admin'
-                    }
-                  ]
-                }
-              ]
-            }
-          }
+          user={user}
           project={
             {
               role: 'carlos',
@@ -138,19 +87,7 @@ function Home() {
             }
 
           }
-          team={
-            {
-              name: "Crader's tlub",
-              pfp: {
-                data: logo_ct
-              } as Image,
-              description: 'We are just a normal corp trying to fund some money. Money is gonna change the world.',
-              users: [],
-              header: {
-                data: header_team
-              } as Image
-            }
-          }
+          team={team}
         />
 
         <div className='fixed w-[calc(100px)] h-screen flex flex-col items-center l-0 z-2 '>

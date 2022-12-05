@@ -14,7 +14,7 @@ export const UserTeamCard = (props: Props) => {
           <img
             src={`data:${props.team.pfp.type},${props.team.pfp.data}`}
             alt=""
-            className="h-full team-img w-max rounded-tl-10"
+            className="h-full team-img w-max rounded-tl-10 object-cover rounded-tl-lg"
           />
         </div>
         <div className="team-info w-[70%] flex flex-col justify-center">
@@ -27,7 +27,7 @@ export const UserTeamCard = (props: Props) => {
             </p>
           </div>
           <div className="team-description ml-[2%] text-white text-xs">
-            membros
+            membro(s)
           </div>
         </div>
       </div>

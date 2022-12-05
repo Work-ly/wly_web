@@ -4,40 +4,47 @@ import { toast } from "react-toastify";
 
 import { Image } from "../models/Image";
 import toBase64 from "../util/Base64";
-import { LocalUser, UpdateUserRequest, FirebaseUser } from "../models/User";
+import { FirebaseUser } from "../models/User";
+import { LocalTeam, CreateTeamRequest } from "../models/Team";
 
 interface Props {
   close: any;
-  user: LocalUser;
 }
 
-export const UserEditPopup = (props: Props) => {
-  const [username, setUsername] = useState("");
+export const TeamCreatePopup = (props: Props) => {
+  const [teamname, setTeamname] = useState("");
   const [description, setDescription] = useState("");
-  const [pfp, setPfp] = useState(props.user.pfp);
-  const [header, setHeader] = useState(props.user.header);
+  const [pfp, setPfp] = useState({data: ""} as Image);
+  const [header, setHeader] = useState({data: ""} as Image);
 
-  const update = async (newUser: UpdateUserRequest | null) => {
+  const create = async () => {
     const url: string =
       "http://" +
       process.env.REACT_APP_WLY_BACK_HOST +
       ":" +
       process.env.REACT_APP_WLY_BACK_PORT +
-      "/user";
+      "/team"
+
+    const newTeam: CreateTeamRequest = {
+      name: teamname,
+      description: description,
+      pfp: pfp,
+      header: header
+    }
 
     const fbUser: FirebaseUser = JSON.parse(localStorage.getItem("fb_user")!);
     fetch(url, {
-      method: "PUT",
+      method: "POST",
       headers: {
         Authorization: `Bearer ${fbUser.idToken}`,
       },
-      body: JSON.stringify(newUser),
+      body: JSON.stringify(newTeam),
     })
       .then((resp) => {
         if (resp.ok) {
           return resp.json();
         } else {
-          toast("Could not Update", {
+          toast("Could not create team", {
             position: "top-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -46,12 +53,12 @@ export const UserEditPopup = (props: Props) => {
             draggable: false,
             progress: undefined,
             theme: "dark",
-          });
+          })
         }
       })
       .then((res) => {
         if (res) {
-          toast("Updated Successfully", {
+          toast("Created Successfully", {
             position: "top-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -60,10 +67,10 @@ export const UserEditPopup = (props: Props) => {
             draggable: false,
             progress: undefined,
             theme: "dark",
-          });
+          })
 
-          localStorage.setItem("user", JSON.stringify(res));
-          window.location.reload();
+          localStorage.setItem("team", JSON.stringify(res))
+          window.location.reload()
         }
       });
   };
@@ -89,9 +96,8 @@ export const UserEditPopup = (props: Props) => {
             type="text"
             className="w-[80%] md:h-12 xl:h-14 rounded-lg text-black md:text-md xl:text-lg p-4"
             required
-            placeholder={props.user.name}
             onChange={(e: any) => {
-              setUsername(e.target.value);
+              setTeamname(e.target.value);
             }}
           />
         </div>
@@ -105,7 +111,7 @@ export const UserEditPopup = (props: Props) => {
           </p>
           <textarea
             className="w-[80%] md:h-64 xl:h-72 rounded-lg text-black md:text-sm xl:text-lg pl-4 pt-2 pr-4 text-start resize-none"
-            placeholder={props.user.description}
+
             onChange={(e: any) => {
               setDescription(e.target.value);
             }}
@@ -140,8 +146,8 @@ export const UserEditPopup = (props: Props) => {
                 className="hidden"
                 onChange={async (e: any) => {
                   const file: File = e.target.files[0]
-                    await toBase64(file).then((data: any) => {
-                      setPfp({
+                  await toBase64(file).then((data: any) => {
+                    setPfp({
                       type: data.slice(5, 22),
                       data: data.slice(23)
                     } as Image)
@@ -203,15 +209,8 @@ export const UserEditPopup = (props: Props) => {
             type="submit"
             className="w-[35%] h-[70%] bg-purple-primary-light text-white text-lg rounded-lg mr-20
           transition duration-200 ease-in hover:bg-dark-02 cursor-pointer"
-            value="Edit"
-            onClick={() => {
-              update({
-                name: username,
-                description: description,
-                pfp: pfp,
-                header: header
-              } as UpdateUserRequest);
-            }}
+            value="Create"
+            onClick={create}
           />
         </div>
       </div>
