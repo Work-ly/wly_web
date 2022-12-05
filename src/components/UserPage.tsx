@@ -9,6 +9,7 @@ import { LocalTeam } from "../models/Team";
 import { setConstantValue } from "typescript";
 import { setEnvironmentData } from "worker_threads";
 import { UserTeamCard } from "./UserTeamCard";
+
 interface Props {
   user: LocalUser;
   //projects: [LocalProject]
@@ -47,8 +48,12 @@ function EditUser(curUser: LocalUser) {
   );
 }
 
+interface LocalTeams {
+  teams: LocalTeam[]
+}
+
 export const UserPage = (props: Props) => {
-  const [teams, setTeams] = useState([]);
+  const [teams, setTeams] = useState({} as LocalTeams);
 
   useEffect(() => {
     const uri: string =
@@ -127,7 +132,15 @@ export const UserPage = (props: Props) => {
       </div>
       <div className="userteams w-[99%] h-[50%] flex flex-row items-center mt-1">
         <>
-        hello: {teams!.forEach(team => console.log(team!))}
+        {
+          (teams.teams != null || teams.teams != undefined)
+            ? teams.teams.map((team, i) => {
+              console.log(team)
+              
+              return <UserTeamCard team={team}/>
+            })
+            : <></>
+        }
         </>
       </div>
     </div>

@@ -33,7 +33,9 @@ function Dropdowns() {
 
   return (
     <>
-    <ConfigDropdown />
+    {
+      //<ConfigDropdown />
+    }
       <a
         onClick={() => setChatOpen(!chatOpen)}
         className="flex items-center justify-center group "
