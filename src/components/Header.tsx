@@ -27,37 +27,13 @@ interface Props {
   project: UserProject;
 }
 
-function ConfigPopup() {
-  const [cfgOpen, setCfgOpen] = useState(false);
-  return (
-    <>
-      <a
-        onClick={() => setCfgOpen(!cfgOpen)}
-        className="flex flex-row items-center justify-center h-[70%] w-36 hover:cursor-pointer group"
-      >
-        <img src={project} className="w-[calc(20px)]"></img>
-        <div className="h-[30%] flex justify-center items-center">
-          <p
-            id="team"
-            className="ml-2 text-sm text-white transition-all duration-300 border-t-2 border-b-2 group-hover:border-b-white border-t-dark border-b-dark"
-          ></p>
-        </div>
-        <img
-          src={arrow}
-          className="w-[calc(10px)] ml-2 mt-1  group-hover:translate-y-[1px] transition-all duration-300 ease-out"
-        ></img>
-      </a>
-      {cfgOpen ? <ConfigDropdown /> : <></>}
-    </>
-  );
-}
-
 function Dropdowns() {
   const [chatOpen, setChatOpen] = useState(false);
   const [ntcOpen, setNtcOpen] = useState(false);
 
   return (
     <>
+    <ConfigDropdown />
       <a
         onClick={() => setChatOpen(!chatOpen)}
         className="flex items-center justify-center group "
@@ -85,6 +61,7 @@ function Dropdowns() {
 }
 
 function Header(props: Props) {
+  const [cfgOpen, setCfgOpen] = useState(false);
   return (
     <>
       <div className="absolute z-50 flex flex-row w-screen h-16 ">
@@ -101,7 +78,21 @@ function Header(props: Props) {
               </p>
             </a>
 
-            <ConfigPopup />
+            <a className="flex flex-row items-center justify-center h-[70%] w-36 hover:cursor-pointer group">
+              <img src={project} className="w-[calc(20px)]"></img>
+              <div className="h-[30%] flex justify-center items-center">
+                <p
+                  id="team"
+                  className="ml-2 text-sm text-white transition-all duration-300 border-t-2 border-b-2 group-hover:border-b-white border-t-dark border-b-dark"
+                >
+                  {props.project.project.name}
+                </p>
+              </div>
+              <img
+                src={arrow}
+                className="w-[calc(10px)] ml-2 mt-1  group-hover:translate-y-[1px] transition-all duration-300 ease-out"
+              ></img>
+            </a>
           </div>
 
           <div className=" w-[calc(300px)] flex flex-row justify-center items-center mt-0">
@@ -109,7 +100,13 @@ function Header(props: Props) {
               <Dropdowns />
             </div>
             <div>
-              <a className="flex flex-row items-center justify-end w-32 ml-4 hover:cursor-pointer group">
+              <a
+                className="flex flex-row items-center justify-end w-max ml-4 hover:cursor-pointer group"
+                onClick={() => {
+                  setCfgOpen(!cfgOpen);
+                  return <>{cfgOpen ? <ConfigDropdown /> : <></>}</>;
+                }}
+              >
                 <div className="w-[40px] h-[40px] mr-2 rounded-full border-2 text-white flex justify-center items-center">
                   <img
                     id="usr_img"

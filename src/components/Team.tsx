@@ -60,7 +60,7 @@ export const Team = (props: Props) => {
 
             <div className='w-full h-full '>
 
-              <img src={props.team.header} alt="" className="w-full h-full gradient-bt-img z-5 " />
+              <img src={props.team.header.data} alt="" className="w-full h-full gradient-bt-img z-5 " />
 
             </div>
 

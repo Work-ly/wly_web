@@ -5,10 +5,11 @@
  */
 
 import { UserTeam } from './User'
+import { Image } from './Image'
 
 export interface LocalTeam {
-  pfp: string
-  header: string
+  pfp: Image
+  header: Image
   name: string
   description: string
   users: Array<UserTeam>

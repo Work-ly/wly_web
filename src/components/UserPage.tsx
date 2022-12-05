@@ -1,62 +1,84 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
 import { FiEdit } from "react-icons/fi";
-import { LocalUser } from "../models/User";
-import { UserEditPopup } from "../components/UserEditPopup"
+import { LocalUser, FirebaseUser } from "../models/User";
+import { UserEditPopup } from "../components/UserEditPopup";
 import { LocalProject } from "../models/Project";
+import { LocalTeam } from "../models/Team";
+import { setConstantValue } from "typescript";
+import { setEnvironmentData } from "worker_threads";
+import { UserTeamCard } from "./UserTeamCard";
 interface Props {
-  user: LocalUser,
+  user: LocalUser;
   //projects: [LocalProject]
 }
 
 function EditUser(curUser: LocalUser) {
-  const [userEditOpen, setUserEditOpen] = useState(false)
+  const [userEditOpen, setUserEditOpen] = useState(false);
 
   return (
     <>
-      <div onClick={() => setUserEditOpen(!userEditOpen)} className='hover:cursor-default'>
+      <div
+        onClick={() => setUserEditOpen(!userEditOpen)}
+        className="hover:cursor-default"
+      >
         <a className="transition-all duration-100 ease-linear cursor-pointer hover:text-purple-primary-light">
           <FiEdit />
         </a>
       </div>
 
-
-      {userEditOpen ? <UserEditPopup
-        close={() => setUserEditOpen(!userEditOpen)}
-        user={
-          {
+      {userEditOpen ? (
+        <UserEditPopup
+          close={() => setUserEditOpen(!userEditOpen)}
+          user={{
             name: curUser.name,
             email: curUser.email,
             pfp: curUser.pfp,
             header: curUser.header,
             description: curUser.description,
-            teams: [
-              {
-                pfp: 'a',
-                header: 'a',
-                name: 'a',
-                description: 'a',
-                users: [
-                  {
-                    name: 'a',
-                    role: 'a'
-                  },
-                  {
-                    name: 'a',
-                    role: 'a'
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      /> : <></>}
+            teams: [],
+          }}
+        />
+      ) : (
+        <></>
+      )}
     </>
-  )
+  );
 }
 
 export const UserPage = (props: Props) => {
+  const [teams, setTeams] = useState([]);
+
+  useEffect(() => {
+    const uri: string =
+      "http://" +
+      process.env.REACT_APP_WLY_BACK_HOST +
+      ":" +
+      process.env.REACT_APP_WLY_BACK_PORT +
+      "/user/" +
+      props.user.name +
+      "/teams"
+
+    const fbUser: FirebaseUser = JSON.parse(localStorage.getItem("fb_user")!);
+    const teamsDataFetch = async () => {
+      const teamsData = await (
+        await fetch(uri, {
+          method: "GET",
+          mode: "cors",
+          headers: {
+            Authorization: `Bearer ${fbUser.idToken}`,
+          },
+        })
+      ).json()
+
+      setTeams(teamsData)
+    }
+
+    teamsDataFetch()
+  }, [])
+
+
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="userinfo rounded-tl-lg rounded-tr-lg w-full h-[35%] ">
@@ -75,9 +97,7 @@ export const UserPage = (props: Props) => {
               <div className="flex flex-row items-center">
                 <p className="text-md "> {props.user.name} </p>
                 <a className="ml-2 w-[1%] cursor-pointer">
-                  <EditUser {...props.user} />
-                  {" "}
-                  {" "}
+                  <EditUser {...props.user} />{" "}
                 </a>
               </div>
               <p className="text-sm"> {props.user.email} </p>
@@ -106,195 +126,9 @@ export const UserPage = (props: Props) => {
         <p className="absolute ml-2 text-white">Teams</p>
       </div>
       <div className="userteams w-[99%] h-[50%] flex flex-row items-center mt-1">
-        <div className="w-[28%] h-full bg-dark-02 rounded-lg mr-4">
-          {props.user.teams.map((team, i) => {
-            return (
-              <>
-                <div className="team h-[30%] flex flex-row">
-                  <div className="team-img-div w-[30%]">
-                    <img
-                      src={`data:image/jpeg;base64,${team.pfp}`}
-                      alt=""
-                      className="h-full team-img w-max rounded-tl-10"
-                    />
-                  </div>
-                  <div className="team-info w-[70%] flex flex-col justify-center">
-                    <div className="team-name ml-[2%]">
-                      <p className="text-sm text-white">{team.name}</p>
-                    </div>
-                    <div className="team-description ml-[2%] h-[40px] pr-4">
-                      <p className="w-full overflow-hidden text-xs text-white line-clamp">
-                        {team.description}
-                      </p>
-                    </div>
-                    <div className="team-description ml-[2%] text-white text-xs">
-                      membros
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full h-[65%] rounded-br-lg rounded-bl-lg ">
-                  <div
-                    id="projects"
-                    className="w-full h-[90%] flex flex-col justify-start items-center overflow-auto overflow-contain text-xs text-light-gray"
-                  >
-                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[20px]">
-                      <div className="project-name">Project-01</div>
-
-                      <div className="ppl flex w-[50%] justify-around items-center">
-                        <div className="members">2 Members</div>
-                        <div className="role">Owner</div>
-                      </div>
-                    </div>
-
-                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
-                      <div className="project-name">Project-01</div>
-
-                      <div className="ppl flex w-[50%] justify-around items-center">
-                        <div className="members">2 Members</div>
-                        <div className="role">Owner</div>
-                      </div>
-                    </div>
-
-                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
-                      <div className="project-name">Project-01</div>
-
-                      <div className="ppl flex w-[50%] justify-around items-center">
-                        <div className="members">2 Members</div>
-                        <div className="role">Owner</div>
-                      </div>
-                    </div>
-
-                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
-                      <div className="project-name">Project-01</div>
-
-                      <div className="ppl flex w-[50%] justify-around items-center">
-                        <div className="members">2 Members</div>
-                        <div className="role">Owner</div>
-                      </div>
-                    </div>
-
-                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
-                      <div className="project-name">Project-01</div>
-
-                      <div className="ppl flex w-[50%] justify-around items-center">
-                        <div className="members">2 Members</div>
-                        <div className="role">Owner</div>
-                      </div>
-                    </div>
-
-                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
-                      <div className="project-name">Project-01</div>
-
-                      <div className="ppl flex w-[50%] justify-around items-center">
-                        <div className="members">2 Members</div>
-                        <div className="role">Owner</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-
-
-              </>
-            );
-          })}
-        </div>
-
-
-        <div className="w-[28%] h-full bg-dark-02 rounded-lg mr-4">
-          {props.user.teams.map((team, i) => {
-            return (
-              <>
-                <div className="team h-[30%] flex flex-row">
-                  <div className="team-img-div w-[30%]">
-                    <img
-                      src={`data:image/jpeg;base64,${team.pfp}`}
-                      alt=""
-                      className="h-full team-img w-max rounded-tl-10"
-                    />
-                  </div>
-                  <div className="team-info w-[70%] flex flex-col justify-center">
-                    <div className="team-name ml-[2%]">
-                      <p className="text-sm text-white">{team.name}</p>
-                    </div>
-                    <div className="team-description ml-[2%] h-[40px] pr-4">
-                      <p className="w-full overflow-hidden text-xs text-white line-clamp">
-                        {team.description}
-                      </p>
-                    </div>
-                    <div className="team-description ml-[2%] text-white text-xs">
-                      membros
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full h-[65%] rounded-br-lg rounded-bl-lg ">
-                  <div
-                    id="projects"
-                    className="w-full h-[90%] flex flex-col justify-start items-center overflow-auto overflow-contain text-xs text-light-gray"
-                  >
-                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[20px]">
-                      <div className="project-name">Project-01</div>
-
-                      <div className="ppl flex w-[50%] justify-around items-center">
-                        <div className="members">2 Members</div>
-                        <div className="role">Owner</div>
-                      </div>
-                    </div>
-
-                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
-                      <div className="project-name">Project-01</div>
-
-                      <div className="ppl flex w-[50%] justify-around items-center">
-                        <div className="members">2 Members</div>
-                        <div className="role">Owner</div>
-                      </div>
-                    </div>
-
-                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
-                      <div className="project-name">Project-01</div>
-
-                      <div className="ppl flex w-[50%] justify-around items-center">
-                        <div className="members">2 Members</div>
-                        <div className="role">Owner</div>
-                      </div>
-                    </div>
-
-                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
-                      <div className="project-name">Project-01</div>
-
-                      <div className="ppl flex w-[50%] justify-around items-center">
-                        <div className="members">2 Members</div>
-                        <div className="role">Owner</div>
-                      </div>
-                    </div>
-
-                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
-                      <div className="project-name">Project-01</div>
-
-                      <div className="ppl flex w-[50%] justify-around items-center">
-                        <div className="members">2 Members</div>
-                        <div className="role">Owner</div>
-                      </div>
-                    </div>
-
-                    <div className="w-[90%] h-6 flex flex-row justify-between mt-[8px]">
-                      <div className="project-name">Project-01</div>
-
-                      <div className="ppl flex w-[50%] justify-around items-center">
-                        <div className="members">2 Members</div>
-                        <div className="role">Owner</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </>
-            );
-          })}
-        </div>
-
-
+        <>
+        hello: {teams!.forEach(team => console.log(team!))}
+        </>
       </div>
     </div>
   );

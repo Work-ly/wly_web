@@ -72,6 +72,7 @@ function Login(props: Props): JSX.Element {
           });
 
           localStorage.setItem("user", JSON.stringify(res.wly_user));
+          localStorage.setItem("fb_user", JSON.stringify(res.firebase_user))
 
           window.location.href = "/home";
         }

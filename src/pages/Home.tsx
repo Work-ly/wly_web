@@ -11,6 +11,7 @@ import Header from '../components/Header'
 
 import { UserPage } from '../components/UserPage'
 import { Team } from '../components/Team'
+import { Image } from '../models/Image'
 
 import { AiFillGithub, AiFillGoogleSquare, AiFillHome } from 'react-icons/ai'
 import pfp from '../dist/images/pfp.png'
@@ -51,24 +52,7 @@ const Components = [
         pfp: user.pfp,
         header: user.header,
         description: user.description,
-        teams: [
-          {
-            pfp: logo_ct,
-            header: header,
-            name: team.name,
-            description: team.description,
-            users: [
-              {
-                name: 'JozuTm',
-                role: 'Admin'
-              },
-              {
-                name: 'carlos2',
-                role: 'Member'
-              }
-            ]
-          }
-        ]
+        teams: []
       }
     }
 
@@ -77,11 +61,12 @@ const Components = [
     team={
       {
         name: team.name,
-        pfp: team.pfp,
         description: team.description,
+        pfp: team.pfp,
+        header: {
+          data: header_team
+        } as Image,
         users: [],
-        header: header_team
-
       }
     }
   />,
@@ -126,8 +111,12 @@ function Home() {
               description: user.description,
               teams: [
                 {
-                  pfp: logo_ct,
-                  header: header,
+                  pfp: {
+                    data: logo_ct
+                  } as Image,
+                  header: {
+                    data: header
+                  } as Image,
                   name: 'Nome',
                   description: 'djweiofhyuieagyuegafdjweiofhyuieagyuegafdjweiofhyuieagyuegaf',
                   users: [
@@ -152,11 +141,14 @@ function Home() {
           team={
             {
               name: "Crader's tlub",
-              pfp: logo_ct,
+              pfp: {
+                data: logo_ct
+              } as Image,
               description: 'We are just a normal corp trying to fund some money. Money is gonna change the world.',
               users: [],
-              header: header_team
-
+              header: {
+                data: header_team
+              } as Image
             }
           }
         />

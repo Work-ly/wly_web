@@ -2,7 +2,7 @@
  * file: src/pages/Landing.tsx
  * author: Josue Teodoro Moreira <teodoro.josue@protonmail.ch>
  * date: July 31, 2022
- */
+ */ 
 
 import React, { useState } from 'react'
 import './Landing.css'
@@ -21,7 +21,7 @@ function a() {
 function Landing(props: Props) {
   return (
     <>
-      <div className=' w-screen  bg-dark-02'>
+      <div className='w-screen bg-dark-02'>
         <img src={Shade} className="fixed z-0 h-full pointer-events-none" />
         <div className='fixed z-50 flex flex-row items-center justify-between w-full h-20 landing-navbar xl:h-28 bg-gradient-to-b from-dark to-transparent'>
 
@@ -64,15 +64,15 @@ function Landing(props: Props) {
             <p className='text-center w-[35%] text-white md:text-md xl:text-xl xl:w-[40%]'>Focusing on your experience, Work.ly brings you a simple design, which guarantees you a game changer in terms of optimizing time </p>
           </div>
         </div>
-        <div className="h-[200vh]  relative flex flex-col justify-center ">
-          <div className="h-2/3 w-full flex justify-center items-center">
-            <div className="card w-[80%] h-[40%] flex justify-around items-center">
+        <div className="h-[100vh]  relative flex flex-col justify-center ">
+          <div className="flex items-start justify-center w-full h-2/3">
+            <div className="card w-[80%] h-[75%] flex justify-around items-center">
               <div className="card-01 w-[30%] h-[90%] bg-dark-02 border-[1px] border-white rounded-lg transiton-all duration-200 group ease-out
               hover:scale-105 hover:shadow-[0px_1px_10px_rgba(255,255,255,0.25)]
               ">
                 <div className="h-[30%] w-full flex justify-center items-end transition-all duration-200 ease-out
                  ">
-                  <p className='text-white text-center md:text-md xl:text-xl pointer-events-none'> A huge lack of tools</p>
+                  <p className='text-center text-white pointer-events-none md:text-md xl:text-xl'> A huge lack of tools</p>
                 </div>
                 <div className="h-[70%] flex justify-center items-center transition-all duration-250 ease-out
                 
@@ -85,7 +85,7 @@ function Landing(props: Props) {
               ">
                 <div className="h-[30%] w-full flex justify-center items-end transition-all duration-200 ease-out
                  ">
-                  <p className='text-white text-center md:text-md xl:text-xl pointer-events-none'> A huge lack of tools</p>
+                  <p className='text-center text-white pointer-events-none md:text-md xl:text-xl'> A huge lack of tools</p>
                 </div>
                 <div className="h-[70%] flex justify-center items-center transition-all duration-250 ease-out
                 
@@ -98,7 +98,7 @@ function Landing(props: Props) {
               ">
                 <div className="h-[30%] w-full flex justify-center items-end transition-all duration-200 ease-out
                  ">
-                  <p className='text-white text-center md:text-md xl:text-xl pointer-events-none'> A huge lack of tools</p>
+                  <p className='text-center text-white pointer-events-none md:text-md xl:text-xl'> A huge lack of tools</p>
                 </div>
                 <div className="h-[70%] flex justify-center items-center transition-all duration-250 ease-out
                 
@@ -108,7 +108,6 @@ function Landing(props: Props) {
               </div>
             </div>
           </div>
-          <div className="h-1/2 bg-black"></div>
 
 
         </div>
