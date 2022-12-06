@@ -1,24 +1,21 @@
-import React, { Component, useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import React, { Component, useEffect, useState } from "react"
+import ReactDOM from "react-dom"
 
-import { FiEdit } from "react-icons/fi";
+import { FiEdit } from "react-icons/fi"
 import { AiFillPlusCircle } from "react-icons/ai"
-import { LocalUser, FirebaseUser } from "../models/User";
-import { UserEditPopup } from "../components/UserEditPopup";
-import { LocalProject } from "../models/Project";
-import { LocalTeam } from "../models/Team";
-import { setConstantValue } from "typescript";
-import { setEnvironmentData } from "worker_threads";
-import { UserTeamCard } from "./UserTeamCard";
+import { LocalUser, FirebaseUser } from "../models/User"
+import { UserEditPopup } from "../components/UserEditPopup"
+import { LocalProject } from "../models/Project"
+import { LocalTeam } from "../models/Team"
+import { setConstantValue } from "typescript"
+import { setEnvironmentData } from "worker_threads"
+import { UserTeamCard } from "./UserTeamCard"
+import { ProjectCreatePopup } from "./ProjectCreatePopup"
 import { TeamCreatePopup } from "./TeamCreatePopup"
-
-interface Props {
-  user: LocalUser;
-  //projects: [LocalProject]
-}
+import userEvent from "@testing-library/user-event"
 
 function EditUser(curUser: LocalUser) {
-  const [userEditOpen, setUserEditOpen] = useState(false);
+  const [userEditOpen, setUserEditOpen] = useState(false)
 
   return (
     <>
@@ -47,7 +44,7 @@ function EditUser(curUser: LocalUser) {
         <></>
       )}
     </>
-  );
+  )
 }
 
 function CreateTeam() {
@@ -55,27 +52,50 @@ function CreateTeam() {
 
   return (
     <>
-      <button onClick={() => setTeamOpen(!teamOpen)} className="flex flex-col items-center justify-around h-10 pt-6 pb-6 pl-4 pr-4 text-white transition-all duration-200 border-2 border-white rounded-lg group">
-        <p className="transition-all duration-200 group-hover:-translate-y-[1px]"> Team</p>
-        <i className="transition-all duration-200 group-hover:scale-105 group-hover:text-purple-primary-light"><AiFillPlusCircle /></i>
+      <button
+        onClick={() => setTeamOpen(!teamOpen)}
+        className="flex flex-col items-center justify-around h-10 pt-6 pb-6 pl-4 pr-4 text-white transition-all duration-200 border-2 border-white rounded-lg group"
+      >
+        <p className="transition-all duration-200 group-hover:-translate-y-[1px]">
+          {" "}
+          Team
+        </p>
+        <i className="transition-all duration-200 group-hover:scale-105 group-hover:text-purple-primary-light">
+          <AiFillPlusCircle />
+        </i>
       </button>
 
-      {teamOpen ?
-        <TeamCreatePopup close={() => setTeamOpen(!teamOpen)} />
-        : <></>}
+      {teamOpen ? (
+        <TeamCreatePopup close={() => {setTeamOpen(!teamOpen)}} />
+      ) : (
+        <></>
+      )}
     </>
   )
+}
+
+interface Props {
+  user: LocalUser
 }
 
 interface LocalTeams {
   teams: LocalTeam[]
 }
 
+export interface LocalUsers {
+  users: LocalUser[]
+}
+
+interface LocalTeamUsers {
+  teamUsers: LocalUsers[]
+}
+
 export const UserPage = (props: Props) => {
-  const [teams, setTeams] = useState({} as LocalTeams);
+  const [teams, setTeams] = useState({teams: []} as LocalTeams)
+  const [teamsUsers, setTeamsUsers] = useState({teamUsers: []} as LocalTeamUsers)
 
   useEffect(() => {
-    const uri: string =
+    const uriUserTeams: string =
       "http://" +
       process.env.REACT_APP_WLY_BACK_HOST +
       ":" +
@@ -84,10 +104,10 @@ export const UserPage = (props: Props) => {
       props.user.name +
       "/teams"
 
-    const fbUser: FirebaseUser = JSON.parse(localStorage.getItem("fb_user")!);
+    const fbUser: FirebaseUser = JSON.parse(localStorage.getItem("fb_user")!)
     const teamsDataFetch = async () => {
       const teamsData = await (
-        await fetch(uri, {
+        await fetch(uriUserTeams, {
           method: "GET",
           mode: "cors",
           headers: {
@@ -102,14 +122,41 @@ export const UserPage = (props: Props) => {
     teamsDataFetch()
   }, [])
 
+  useEffect(() => {
+      var teamsUsers: LocalTeamUsers = {teamUsers: []} as LocalTeamUsers
+      teams.teams.forEach(async (team: LocalTeam, i) => {
+        const uriTeamUsers: string =
+          "http://" +
+          process.env.REACT_APP_WLY_BACK_HOST +
+          ":" +
+          process.env.REACT_APP_WLY_BACK_PORT +
+          "/team/" +
+          team.name +
+          "/users"
+
+      const fbUser: FirebaseUser = JSON.parse(localStorage.getItem("fb_user")!)
+        const usersData = await (
+          await fetch(uriTeamUsers, {
+            method: "GET",
+            mode: "cors",
+            headers: {
+              Authorization: `Bearer ${fbUser.idToken}`,
+            }
+          })
+        ).json()
+
+      teamsUsers.teamUsers.push(usersData)
+      setTeamsUsers(teamsUsers)
+    })
+  }, [])
 
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="userinfo rounded-tl-lg rounded-tr-lg w-full h-[35%] ">
         <div className="user-info text-white flex h-[30%] w-[89%] flex-row absolute items-end justify-between">
           <div className="flex flex-row items-end ">
-            <div className="ml-10 pfp w-[8rem]">
-              <div className="pfp_img w-[100%]">
+            <div className="ml-10 pfp w-[8rem] h-[8rem]">
+              <div className="pfp_img w-[100%] h-[100%]">
                 <img
                   src={`data:${props.user.pfp.type},${props.user.pfp.data}`}
                   alt="Profile Pic"
@@ -149,22 +196,22 @@ export const UserPage = (props: Props) => {
       <div className="h-[8%] w-full flex items-end ">
         <p className="absolute ml-2 text-white">Teams</p>
       </div>
-      <div className="userteams w-[99%] h-[50%] flex flex-row mt-1 overflow-x-auto ">
-
-        {
-          (teams.teams != undefined && teams.teams != null)
-            ? (teams.teams.length > 0)
-              ? (teams.teams.map((team, i) => {
-                console.log(team)
-
-                return <UserTeamCard team={team} />
-              }))
-              : <p className="text-white">You're not in any teams.</p>
-            : <></>
-        }
-        <CreateTeam />
-
+      <div className="w-full h-1/2 overflow-x-auto overflow-y-hidden">
+        <div className="userteams w-max h-[100%] flex flex-row mt-1 overflow-x-auto">
+          {teams.teams != undefined && teams.teams != null ? (
+            teams.teams.length > 0 ? (
+              teams.teams.map((team, i) => {
+                return <UserTeamCard team={team} users={teamsUsers.teamUsers[i]}/>
+              })
+            ) : (
+              <></>
+            )
+          ) : (
+            <></>
+          )}
+          <CreateTeam />
+        </div>
       </div>
     </div>
-  );
-};
+  )
+}

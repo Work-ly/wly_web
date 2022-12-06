@@ -4,9 +4,13 @@
  * date: November 16, 2022
  */
 
-
 export interface LocalProject {
-   id: number,
-   name: string,
+  id: number
+  name: string
+  description: string
+}
+
+export interface CreateProjectRequest {
+   name: string
    description: string
 }

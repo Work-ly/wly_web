@@ -1,40 +1,34 @@
-import React, { useState } from "react"
-import { AiOutlineClose } from "react-icons/ai"
-import { toast } from "react-toastify"
+import React, { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
+import { toast } from "react-toastify";
 
-import { Image } from "../models/Image"
-import toBase64 from "../util/Base64"
-import { FirebaseUser } from "../models/User"
-import { LocalTeam, CreateTeamRequest } from "../models/Team"
+import { Image } from "../models/Image";
+import toBase64 from "../util/Base64";
+import { FirebaseUser } from "../models/User";
+import { LocalTeam, TeamUpdateRequest } from "../models/Team";
 
 interface Props {
-  close: any
+  close: any;
+  team: LocalTeam;
 }
 
-export const TeamCreatePopup = (props: Props) => {
-  const [teamname, setTeamname] = useState("")
-  const [description, setDescription] = useState("")
-  const [pfp, setPfp] = useState({ data: "" } as Image)
-  const [header, setHeader] = useState({ data: "" } as Image)
+export const TeamEditPopup = (props: Props) => {
+  const [teamname, setTeamname] = useState("");
+  const [description, setDescription] = useState("");
+  const [pfp, setPfp] = useState(props.team.pfp);
+  const [header, setHeader] = useState(props.team.header);
 
-  const create = async () => {
+  const update = async (newTeam: TeamUpdateRequest | null) => {
     const url: string =
       "http://" +
       process.env.REACT_APP_WLY_BACK_HOST +
       ":" +
       process.env.REACT_APP_WLY_BACK_PORT +
-      "/team"
+      "/team";
 
-    const newTeam: CreateTeamRequest = {
-      name: teamname,
-      description: description,
-      pfp: pfp,
-      header: header,
-    }
-
-    const fbUser: FirebaseUser = JSON.parse(localStorage.getItem("fb_user")!)
+    const fbUser: FirebaseUser = JSON.parse(localStorage.getItem("fb_user")!);
     fetch(url, {
-      method: "POST",
+      method: "PUT",
       headers: {
         Authorization: `Bearer ${fbUser.idToken}`,
       },
@@ -42,9 +36,9 @@ export const TeamCreatePopup = (props: Props) => {
     })
       .then((resp) => {
         if (resp.ok) {
-          return resp.json()
+          return resp.json();
         } else {
-          toast("Could not create team", {
+          toast("Could not Update", {
             position: "top-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -53,12 +47,12 @@ export const TeamCreatePopup = (props: Props) => {
             draggable: false,
             progress: undefined,
             theme: "dark",
-          })
+          });
         }
       })
       .then((res) => {
         if (res) {
-          toast("Created Successfully", {
+          toast("Updated Successfully", {
             position: "top-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -67,16 +61,16 @@ export const TeamCreatePopup = (props: Props) => {
             draggable: false,
             progress: undefined,
             theme: "dark",
-          })
+          });
 
-          localStorage.setItem("team", JSON.stringify(res))
-          window.location.reload()
+          localStorage.setItem("team", JSON.stringify(res));
+          window.location.reload();
         }
-      })
-  }
+      });
+  };
 
   return (
-    <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-screen h-screen text-white bg-low-opacity-black hover:cursor-default">
+    <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-screen h-screen bg-low-opacity-black hover:cursor-default">
       <a
         onClick={props.close}
         className="absolute top-[7%] right-[28.5%]  transition-all duration-100 ease-linear cursor-pointer hover:text-purple-primary-light"
@@ -88,7 +82,7 @@ export const TeamCreatePopup = (props: Props) => {
 
       <div className="w-[45%] h-[90%] border-[2px] border-white rounded-lg bg-dark flex flex-col ">
         <div className="w-full h-[8%] flex justify-center items-center">
-          <p className=" md:text-xl xl:text-xl2">Create a Team</p>
+          <p className="md:text-xl xl:text-xl2">Edit Team info</p>
         </div>
         <div className="w-full h-[20%] flex flex-col justify-center items-center mt-[15px]">
           <p className="description md:text-md xl:text-lg w-[80%]"> Name: </p>
@@ -96,8 +90,9 @@ export const TeamCreatePopup = (props: Props) => {
             type="text"
             className="w-[80%] md:h-12 xl:h-14 rounded-lg text-black md:text-md xl:text-lg p-4"
             required
+            placeholder={props.team.name}
             onChange={(e: any) => {
-              setTeamname(e.target.value)
+              setTeamname(e.target.value);
             }}
           />
         </div>
@@ -111,8 +106,9 @@ export const TeamCreatePopup = (props: Props) => {
           </p>
           <textarea
             className="w-[80%] md:h-64 xl:h-72 rounded-lg text-black md:text-sm xl:text-lg pl-4 pt-2 pr-4 text-start resize-none"
+            placeholder={props.team.description}
             onChange={(e: any) => {
-              setDescription(e.target.value)
+              setDescription(e.target.value);
             }}
           />
         </div>
@@ -136,21 +132,22 @@ export const TeamCreatePopup = (props: Props) => {
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   ></path>
                 </svg>
-                <p className="text-xs ">SVG, PNG or JPG (MAX. 800x400px)</p>
+                <p className="text-xs ">JPG </p>
+                <p>(MAX. 800x400px)</p>
               </div>
               <input
                 id="dropzone-file"
-                accept=".png,.jpeg,.jpg,.svg"
+                accept=".jpeg,.jpg"
                 type="file"
                 className="hidden"
                 onChange={async (e: any) => {
-                  const file: File = e.target.files[0]
+                  const file: File = e.target.files[0];
                   await toBase64(file).then((data: any) => {
                     setPfp({
                       type: data.slice(5, 22),
                       data: data.slice(23),
-                    } as Image)
-                  })
+                    } as Image);
+                  });
                 }}
               />
             </label>
@@ -175,21 +172,22 @@ export const TeamCreatePopup = (props: Props) => {
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   ></path>
                 </svg>
-                <p className="text-xs ">SVG, PNG or JPG (MAX. 1200x400px)</p>
+                <p className="text-xs ">JPG </p>
+                <p>(MAX. 1200x400px)</p>
               </div>
               <input
                 id="dropzone-file"
-                accept=".png,.jpeg,.jpg,.svg"
+                accept=".jpeg,.jpg"
                 type="file"
                 className="hidden"
                 onChange={async (e: any) => {
-                  const file: File = e.target.files[0]
+                  const file: File = e.target.files[0];
                   await toBase64(file).then((data: any) =>
                     setHeader({
                       type: data.slice(5, 22),
                       data: data.slice(23),
                     } as Image)
-                  )
+                  );
                 }}
               />
             </label>
@@ -208,13 +206,20 @@ export const TeamCreatePopup = (props: Props) => {
           </button>
           <input
             type="submit"
-            className="w-[35%] h-[70%] bg-purple-primary-light  text-lg rounded-lg mr-20
+            className="w-[35%] h-[70%] bg-purple-primary-light text-white text-lg rounded-lg mr-20
           transition duration-200 ease-in hover:bg-dark-02 cursor-pointer"
-            value="Create"
-            onClick={create}
+            value="Edit"
+            onClick={() => {
+              update({
+                name: teamname,
+                description: description,
+                pfp: pfp,
+                header: header,
+              } as TeamUpdateRequest);
+            }}
           />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

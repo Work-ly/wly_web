@@ -131,11 +131,11 @@ export const UserEditPopup = (props: Props) => {
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   ></path>
                 </svg>
-                <p className="text-xs ">SVG, PNG or JPG (MAX. 800x400px)</p>
+                <p className="text-xs ">JPG </p><p> (MAX. 800x400px)</p>
               </div>
               <input
                 id="dropzone-file"
-                accept=".png,.jpeg,.jpg,.svg"
+                accept=".jpeg,.jpg"
                 type="file"
                 className="hidden"
                 onChange={async (e: any) => {
@@ -170,11 +170,11 @@ export const UserEditPopup = (props: Props) => {
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   ></path>
                 </svg>
-                <p className="text-xs ">SVG, PNG or JPG (MAX. 1200x400px)</p>
+                <p className="text-xs ">JPG </p><p>(MAX. 1200x400px)</p>
               </div>
               <input
                 id="dropzone-file"
-                accept=".png,.jpeg,.jpg,.svg"
+                accept=".jpeg,.jpg"
                 type="file"
                 className="hidden"
                 onChange={async (e: any) => {

@@ -1,14 +1,16 @@
 import React from 'react'
 
 import { LocalTeam } from "../models/Team";
+import { LocalUsers } from './UserPage';
 
 interface Props {
   team: LocalTeam;
+  users: LocalUsers
 }
 
 export const UserTeamCard = (props: Props) => {
   return (
-    <div className="w-[28%] h-full bg-dark-02 rounded-lg mr-4">
+    <div className="w-[20rem] h-[95%] bg-dark-02 rounded-lg mr-4">
       <div className="team h-[30%] flex flex-row">
         <div className="team-img-div w-[30%]">
           <img
@@ -27,7 +29,7 @@ export const UserTeamCard = (props: Props) => {
             </p>
           </div>
           <div className="team-description ml-[2%] text-white text-xs">
-            membro(s)
+            1 membro
           </div>
         </div>
       </div>

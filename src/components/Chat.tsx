@@ -15,9 +15,10 @@ export const Chat = () => {
         </div>
       </div>
       <div className=" basis-3/5 bg-purple-secondary-dark rounded-tr-[10px] rounded-br-[10px] overflow-y-auto">
-        <div className="h-[15%] bg-gradient-to-b from-purple-primary-dark to-transparent">
-          
+        <div className="h-[15%] bg-gradient-to-b from-purple-primary-dark to-transparent top-0">
+            
         </div>
+        <div className="h-[85%] flex justify-center items-center"><p className="mb-[15%] text-xl">Coming Soon</p></div>
       </div>
     </div>
   );

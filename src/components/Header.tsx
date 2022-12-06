@@ -20,24 +20,28 @@ import { LocalUser, UserProject } from "../models/User";
 import { LocalTeam } from "../models/Team";
 import { LocalProject } from "../models/Project";
 import ReactDOM from "react-dom";
+import useEffect from 'react';
 
 interface Props {
-  team: LocalTeam
+  team: LocalTeam;
   user: LocalUser;
   project: UserProject;
 }
 
 interface Config {
-  user: LocalUser
+  user: LocalUser;
+  team: LocalTeam;
 }
 
 function Config(props: Config) {
-
-  const [cfgOpen, setCfgOpen] = useState(false)
+  const [cfgOpen, setCfgOpen] = useState(false);
 
   return (
     <>
-      <a className="flex flex-row items-center justify-end ml-4 w-max hover:cursor-pointer group" onClick={() => setCfgOpen(!cfgOpen)}>
+      <a
+        className="flex flex-row items-center justify-end ml-4 w-max hover:cursor-pointer group"
+        onClick={() => setCfgOpen(!cfgOpen)}
+      >
         <div className="w-[40px] h-[40px] mr-2 rounded-full border-2 text-white flex justify-end items-center ">
           <img
             id="usr_img"
@@ -46,24 +50,24 @@ function Config(props: Config) {
           ></img>
         </div>
         <p
-        id="usr_nickname"
-        className='text-sm text-white transition-all duration-300 border-t-2 border-b-2 group-hover:border-b-white border-t-dark border-b-dark'
-      >
-        {props.user.name}
-      </p> 
+          id="usr_nickname"
+          className="text-sm text-white transition-all duration-300 border-t-2 border-b-2 group-hover:border-b-white border-t-dark border-b-dark"
+        >
+          {props.user.name}
+        </p>
         <img
           src={arrow}
           className="w-[10px] h-[7px] ml-2 mt-1 group-hover:translate-y-[1px] transition-all duration-300 ease-out"
         ></img>
       </a>
-      {cfgOpen ? <ConfigDropdown
-        user={{ name: props.user.name } as LocalUser} 
-
-      /> : <></>}
+      {cfgOpen ? (
+        <ConfigDropdown user={{ name: props.user.name } as LocalUser} />
+      ) : (
+        <></>
+      )}
     </>
-  )
+  );
 }
-
 
 function Dropdowns() {
   const [chatOpen, setChatOpen] = useState(false);
@@ -101,25 +105,32 @@ function Header(props: Props) {
   return (
     <>
       <div className="absolute z-50 flex flex-row w-[98%] h-16 ">
-        <div className="w-[calc(100px)] h-full flex justify-center items-center ml-[5px]">
+        <div className="w-[calc(103px)] h-full flex justify-center items-center ml-[5px]">
           <img src={wly} className="w-[calc(50px)] absolute z-10" />
         </div>
         <div className="flex flex-row justify-between w-full">
-          <div className="w-[calc(500px)] h-full flex flex-row items-center">
-            <div className="w-[calc(20px)]"></div>
-            <a className="flex flex-row items-center justify-center h-full w-36">
+          <div className="w-1/2 h-full flex flex-row items justify-start z-15">
+            <a className="flex flex-row items-center justify-center h-full w-max ml-[0.15rem]">
               <img src={team} className="w-[calc(20px)]"></img>
-              <p id="team" className="ml-2 text-sm text-white">
-                {props.team.name}
+              <p
+                id="team"
+                className="ml-2 text-sm text-white truncate max-w-[200px]"
+              >
+                
+              {
+                (props.team.name === "")
+                  ? "No team selected"
+                  : props.team.name}
+                    
               </p>
             </a>
 
-            <a className="flex flex-row items-center justify-center h-[70%] w-36 hover:cursor-pointer group">
+            <a className="flex flex-row items-center justify-center h-full w-max ml-[1rem] group cursor-pointer">
               <img src={project} className="w-[calc(20px)]"></img>
               <div className="h-[30%] flex justify-center items-center">
                 <p
                   id="team"
-                  className="ml-2 text-sm text-white transition-all duration-300 border-t-2 border-b-2 group-hover:border-b-white border-t-dark border-b-dark"
+                  className="ml-2 text-sm text-white transition-all duration-300 border-t-2 border-b-2 group-hover:border-b-white border-t-dark border-b-dark truncate max-w-[200px]"
                 >
                   {props.project.project.name}
                 </p>
@@ -131,30 +142,22 @@ function Header(props: Props) {
             </a>
           </div>
 
-          <div className=" w-[calc(300px)] flex flex-row justify-end items-center mt-0">
+          <div className=" w-1/2 flex flex-row justify-end items-center mt-0  z-20 bg-gradient-to-r from-transparent to-dark">
             <div className="flex flex-row items-center justify-around w-24 text-white icons">
               <Dropdowns />
             </div>
             <div className="justify-end w-max">
-
-
               <Config
-                user={
-                  {
-                    name: props.user.name,
-                    pfp: props.user.pfp,
-                    header: props.user.header,
-                    description: props.user.description,
-                    email: props.user.email,
-                    teams: []
-                  }
-                }
-
-
+                user={{
+                  name: props.user.name,
+                  pfp: props.user.pfp,
+                  header: props.user.header,
+                  description: props.user.description,
+                  email: props.user.email,
+                  teams: [],
+                }}
+                team={{} as LocalTeam}
               />
-
-
-
             </div>
           </div>
         </div>

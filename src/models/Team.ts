@@ -4,7 +4,7 @@
  * date: November 11, 2022
  */
 
-import { UserTeam } from './User'
+import { LocalUser, UserTeam } from './User'
 import { Image } from './Image'
 
 export interface LocalTeam {
@@ -12,7 +12,7 @@ export interface LocalTeam {
   header: Image
   name: string
   description: string
-  users: Array<UserTeam>
+  users: LocalUser[]
 }
 
 
@@ -21,4 +21,12 @@ export interface CreateTeamRequest {
   description: string
   pfp: Image
   header: Image
+}
+
+export interface TeamUpdateRequest {
+  name: string
+  description: string
+  pfp: Image
+  header: Image
+
 }
